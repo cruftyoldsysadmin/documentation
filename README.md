@@ -2,7 +2,7 @@
 
  * Overview *(TODO)*
    * Key Processes *(TODO)*
-   * Claim Template and Claim Template Registry
+   * [Claim Template and Claim Template Registry](https://github.com/ixofoundation/documentation/blob/master/overview/Claim%20Template%20and%20Claim%20Template%20Registry.md)
    * Impact Contract *(TODO)*
    * Impact Claim *(TODO)*
    * Impact Data *(TODO)*
