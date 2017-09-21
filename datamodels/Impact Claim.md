@@ -61,19 +61,24 @@ Impact claims must be associated with an impact **indicators** and not particula
 ### Data Model
 Every Impact Claim must contain the following information
 
-- **templateId** containing an IPLD reference to the impact claim template
-- **indicator** to clasify the metric that will be captured by this impact claim
-- **claimDate** the date and time the impact claim was made
-- **impactDate** the date and time the impact was delivered
-- **location** where the impact claim was delivered
-- **serviceAgentId** is the DID of the service agent that delivered the service
-- **serviceCenterId** the DID of the center or organisation that the service agent belongs to
-- **beneficiaries** *(optional)* a list of DIDs for beneficiaries of this impact service
-- **productsUsed** *(optional)* is an array of the product identifiers of any products used in the delivery of the impact service.  This could be a barcode or other number identifying the product
-- **claimData** The list of claim specific keys and values that are captured for this claim bassed off the impact claim template
-- **reason** A text field descibing why this impact was delivered.  This is captured from the impact claim template
-- **result** One of the following results captured by the service agent ['VERY_EFFECTIVE', 'EFFECTIVE', 'NEUTRL', 'INEFFECTIVE', 'VERY_INEFFECTIVE'] 
-- **signatures** is a list of entities who sign the claim.  The service agent must sign it, but other entities such as the beneficiaries might also sign the claim
+- **templateId**: Contains an IPLD reference to the impact claim template
+- **indicator**: To classify the metric that will be captured by this impact claim
+- **claimDate**: The date and time the impact claim was made
+- **impactDate**: The date and time the impact was delivered
+- **location**: The location where the impact claim was delivered
+- **serviceAgentId**: Is the DID of the service agent that delivered the service
+- **serviceCenterId**: The DID of the center or organisation that the service agent belongs to
+- **beneficiaries** *(optional)*: Is a list of DIDs for beneficiaries of this impact service
+- **productsUsed** *(optional)*: Is an array of the product identifiers of any products used in the delivery of the impact service.  This could be a barcode or other number identifying the product
+- **claimData**: The list of claim specific keys and values that are captured for this claim bassed off the impact claim template
+- **reason**: A text field descibing why this impact was delivered.  This is captured from the impact claim template
+- **result**: One of the following results captured by the service agent
+  - VERY_EFFECTIVE
+  - EFFECTIVE
+  - NEUTRL
+  - INEFFECTIVE
+  - VERY_INEFFECTIVE 
+- **signatures**: Is a list of entities who sign the claim.  The service agent must sign it, but other entities such as the beneficiaries might also sign the claim
 
 
 
