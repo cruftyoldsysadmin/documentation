@@ -1,13 +1,15 @@
 # ixo Protocol Documentation
 
- * Overview *(TODO)*
-   * Key Processes *(TODO)*
-   * [Claim Template and Claim Template Registry](https://github.com/ixofoundation/documentation/blob/master/overview/Claim%20Template%20and%20Claim%20Template%20Registry.md)
-   * Impact Contract *(TODO)*
-   * Impact Claim *(TODO)*
-   * Impact Data *(TODO)*
-   * Impact Credit *(TODO)*
-   * Decentralized Impact Exchange *(TODO)*
+## Overview
+* Data Model
+  * Impact Claim *(TODO)*
+  * Impact Claim Template *(TODO)*
+  * Identifiers
+  * Transaction
+  * Validation
+  * Evaluation
+* Key Processes *(TODO)*
+  * [Claim Template and Claim Template Registry](https://github.com/ixofoundation/documentation/blob/master/components/Claim%20Template%20and%20Claim%20Template%20Registry.md)
  * Architecture *(TODO)*
    * APIs *(TODO)*
    * Public Ethereum *(TODO)*
