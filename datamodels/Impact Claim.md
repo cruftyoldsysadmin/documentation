@@ -5,7 +5,7 @@
 ### _Public Working Draft dated 21 September 2017_
 **Editors**
 
-Cedric Franz (cedric@ixo.foundation.org)
+Cedric Franz
 
 ## Introduction
 Granting the proof that an impact has been deliver by a service agent is a key component of the ixo protocol.  It requires a formal verification process to ensure the delivery took place.  In this process, the **service agent** asks for the verification of the claim and the **evaluation agent** either verifies or denies the **impact claim** based on the evaluation of the data contained within the claim and by using other external data.
