@@ -7,13 +7,15 @@
 
 Cedric Franz
 
+Shaun Conway
+
 ## Introduction
-Granting the proof that an impact has been deliver by a service agent is a key component of the ixo protocol.  It requires a formal verification process to ensure the delivery took place.  In this process, the **service agent** asks for the verification of the claim and the **evaluation agent** either verifies or denies the **impact claim** based on the evaluation of the data contained within the claim and by using other external data.
+Granting the proof that an impact has been deliver by a service agent is a key component of the ixo protocol.  It requires a formal verification process to ensure the delivery took place.  In this process, the **service agent** submits a claim for verification and an **evaluation agent** either verifies or denies the **impact claim** based on the evaluation of the data contained within the claim and by using other external data.
 
 For example, a service agent could submit an impact claim that they have vaccinated a particular person for malaria.  The claim would include the data, location barcode of the malaria vile, beneficiary information etc. This specification provides a standard way to express these claims on the Web in a way that is cryptographically secure, privacy respecting, and automatically verifiable.
 
 ### What is a Impact Claim
-An Impact Claim is a Verifiable Claim stating that an **impact service** has be delivered by a **service agent**.  If follows the structure and standards setup by the [W3C Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/). It is useful to understand the basic terminology and structure of an impact claim.
+An Impact Claim is a Verifiable Claim stating that an **impact service** has be delivered by a **service agent**.  If follows the structure and standards setup by the [W3C Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/) and also follows the standards and structures of the [Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/). It is useful to understand the basic terminology and structure of an impact claim.
 
 An impact claim is made up of the following key elements:
 
@@ -111,7 +113,7 @@ This section defines how the data model described in Data Model Section is reali
       "latitude": <latitude value>,
       "longitude": <longitude value>
    },
-   serviceAgentId: <did for the service agent>,
+   serviceAgentID: <did for the service agent>,
    serviceCenterId: <did of the service center>,
    beneficiaries: [
      <did of the beneficiary>,
@@ -119,9 +121,9 @@ This section defines how the data model described in Data Model Section is reali
    ],
    productsUsed: [
      {
-        @type: "ProductIdentifier",
-        "issuer": <issuer of the product code e.g. EAN-13,
-        "code": <product code>
+        @type: "Product",
+        "brand": <brand of the product>,
+        "productID": <product ID, such as ISBN>
      }
    ],
    
@@ -131,7 +133,7 @@ This section defines how the data model described in Data Model Section is reali
   }
   "reason": <reason for the impact>,
   "result": < [VERY_EFFECTIVE|EFFECTIVE|NEUTRL|INEFFECTIVE|VERY_INEFFECTIVE] >
-  "signatures": [
+  "signatureChain": [
     {
        "@type": <signature algorithm>,
        "created": <date and time of signature>,
