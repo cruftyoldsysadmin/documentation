@@ -14,8 +14,8 @@ Granting the proof that an impact has been deliver by a service agent is a key c
 
 For example, a service agent could submit an impact claim that they have vaccinated a particular person for malaria.  The claim would include the data, location barcode of the malaria vile, beneficiary information etc. This specification provides a standard way to express these claims on the Web in a way that is cryptographically secure, privacy respecting, and automatically verifiable.
 
-### What is a Impact Claim
-An Impact Claim is a Verifiable Claim stating that an **impact service** has be delivered by a **service agent**.  If follows the structure and standards setup by the [W3C Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/) and also follows the standards and structures of the [Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/). It is useful to understand the basic terminology and structure of an impact claim.
+### What is an Impact Claim
+An Impact Claim is a Verifiable Claim stating that an **impact service** has been delivered by a **service agent**.  If follows the structure and standards setup by the [W3C Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/) and also follows the standards and structures of the [Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/). It is useful to understand the basic terminology and structure of an impact claim.
 
 An impact claim is made up of the following key elements:
 
@@ -63,13 +63,13 @@ Impact claims must be associated with an impact **indicators** and not particula
 ### Data Model
 Every Impact Claim must contain the following information
 
-- **templateId**: Contains an IPLD reference to the impact claim template
+- **templateID**: Contains an IPLD reference to the impact claim template
 - **indicator**: To classify the metric that will be captured by this impact claim
 - **claimDate**: The date and time the impact claim was made
 - **impactDate**: The date and time the impact was delivered
 - **location**: The location where the impact claim was delivered
-- **serviceAgentId**: Is the DID of the service agent that delivered the service
-- **serviceCenterId**: The DID of the center or organisation that the service agent belongs to
+- **serviceAgentID**: Is the DID of the service agent that delivered the service
+- **serviceCenterID**: The DID of the center or organisation that the service agent belongs to
 - **beneficiaries** *(optional)*: Is a list of DIDs for beneficiaries of this impact service
 - **productsUsed** *(optional)*: Is an array of the product identifiers of any products used in the delivery of the impact service.  This could be a barcode or other number identifying the product
 - **claimData**: The list of claim specific keys and values that are captured for this claim bassed off the impact claim template
@@ -80,7 +80,7 @@ Every Impact Claim must contain the following information
   - NEUTRL
   - INEFFECTIVE
   - VERY_INEFFECTIVE 
-- **signatures**: Is a list of entities who sign the claim.  The service agent must sign it, but other entities such as the beneficiaries might also sign the claim
+- **signatureChain**: Is a list of signatures of the entities who signed the claim.  The service agent must sign it, but other entities such as the beneficiaries might also sign the claim
 
 
 
@@ -100,7 +100,7 @@ This section defines how the data model described in Data Model Section is reali
      “https://sdmx.org/indicators”
    ],
    "@type": "ImpactClaim",
-   “templateId” : <IPLD reference to unique id of impact claim template>
+   “templateID” : <IPLD reference to unique id of impact claim template>
    "indicator": {
      "@type": "Indicator",
      "issuer": <issuer of the indicator code>,
@@ -114,7 +114,8 @@ This section defines how the data model described in Data Model Section is reali
       "longitude": <longitude value>
    },
    serviceAgentID: <did for the service agent>,
-   serviceCenterId: <did of the service center>,
+   secondaryServiceAgents: <Array of additional service agent dids>
+   serviceCenterID: <did of the service center>,
    beneficiaries: [
      <did of the beneficiary>,
      ....
@@ -130,9 +131,9 @@ This section defines how the data model described in Data Model Section is reali
    “claimData”: {
 	“@type”: <type of impact>
     ....  // The list of impact specific keys,value pairs as specified by template
-  }
+  },
   "reason": <reason for the impact>,
-  "result": < [VERY_EFFECTIVE|EFFECTIVE|NEUTRL|INEFFECTIVE|VERY_INEFFECTIVE] >
+  "result": < [VERY_EFFECTIVE|EFFECTIVE|NEUTRL|INEFFECTIVE|VERY_INEFFECTIVE] >,
   "signatureChain": [
     {
        "@type": <signature algorithm>,

@@ -3,6 +3,7 @@
 ## Overview
 * Data Model
   * [Impact Claim](./datamodels/Impact%20/Claim.md)
+  * [Evaluation Claim](./datamodels/Evaluation%20/Claim.md)
   * Impact Claim Template *(TODO)*
   * Identifiers *(TODO)*
   * Transaction *(TODO)*
