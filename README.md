@@ -8,7 +8,6 @@
   * Identifiers *(TODO)*
   * Transaction *(TODO)*
   * Validation *(TODO)*
-  * Evaluation *(TODO)*
 * Components
   * [Claim Template and Claim Template Registry](./components/Claim%20Template%20and%20Claim%20Template%20Registry.md)
    
