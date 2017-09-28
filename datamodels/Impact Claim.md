@@ -91,17 +91,17 @@ This section defines how the data model described in Data Model Section is reali
 ```json-ld
 {
    "@context": {
-	 "id": "@id",
-	 "type": "@type",
+	   "id": "@id",
+	   "type": "@type",
 
-	 "cn":  "http://schema.cnsnt.io/",
-	 "so":  "http://schema.org/",
+	   "cn":  "http://schema.cnsnt.io/",
+	   "so":  "http://schema.org/",
      "ixo": “http://ixo.foundation/schema”,
      "id":  "https://w3id.org/identity",
      "sec": "https://w3id.org/security/v1",
      "ind": "https://iris.thegiin.org/indicators",
 
-	 “templateID” : "ixo:TemplateRef"
+	   “templateID” : "ixo:TemplateRef"
      "indicator": ixo:Impactndicator"
      "claimDate": "so:Date",
      "impactDate": "so:Date",
