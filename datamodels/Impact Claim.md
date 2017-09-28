@@ -90,64 +90,32 @@ This section defines how the data model described in Data Model Section is reali
 
 ```json-ld
 {
-   "@context": [
-     "http://schema.org/",
-     "http://schema.cnsnt.io/",
-     “http://ixo.foundation/schema”,
-     "https://w3id.org/identity/v1",
-     "https://w3id.org/security/v1",
-     "https://iris.thegiin.org/indicators",
-     “https://sdmx.org/indicators”
-   ],
-   "@type": "ImpactClaim",
-   “templateID” : <IPLD reference to unique id of impact claim template>
-   "indicator": {
-     "@type": "Indicator",
-     "issuer": <issuer of the indicator code>,
-     "code": <indicator code>
-   },
-   "claimDate": <date and time the impact claim was made>,
-   "impactDate": <date and time of the impact delivery>,
-   "location": {
-      "@type": "GeoCoordinates",
-      "latitude": <latitude value>,
-      "longitude": <longitude value>
-   },
-   serviceAgentID: <did for the service agent>,
-   secondaryServiceAgents: <Array of additional service agent dids>
-   serviceCenterID: <did of the service center>,
-   beneficiaries: [
-     <did of the beneficiary>,
-     ....
-   ],
-   productsUsed: [
-     {
-        @type: "Product",
-        "brand": <brand of the product>,
-        "productID": <product ID, such as ISBN>
-     }
-   ],
-   
-   “claimData”: {
-	“@type”: <type of impact>
-    ....  // The list of impact specific keys,value pairs as specified by template
-  },
-  "reason": <reason for the impact>,
-  "result": < [VERY_EFFECTIVE|EFFECTIVE|NEUTRL|INEFFECTIVE|VERY_INEFFECTIVE] >,
-  "signatureChain": [
-    {
-       "@type": <signature algorithm>,
-       "created": <date and time of signature>,
-       "creator": <did of the serviceAgent>,
-       "signatureValue": <signature value>
-     },
-     ....  //Any other signatures e.g. beneficiary
-  ]
+   "@context": {
+	 "id": "@id",
+	 "type": "@type",
+
+	 "cn":  "http://schema.cnsnt.io/",
+	 "so":  "http://schema.org/",
+     "ixo": “http://ixo.foundation/schema”,
+     "id":  "https://w3id.org/identity",
+     "sec": "https://w3id.org/security/v1",
+     "ind": "https://iris.thegiin.org/indicators",
+
+	 “templateID” : "ixo:TemplateRef"
+     "indicator": ixo:Impactndicator"
+     "claimDate": "so:Date",
+     "impactDate": "so:Date",
+     "location": "so:GeoCoordinates"
+     "serviceAgentID": "ixo:ServiceAgent",
+     "secondaryServiceAgents": "ixo:ServiceAgents"
+     "serviceCenterID": "so:Place",
+     "beneficiaries": "so:People",
+     "productsUsed": "so:ItemList"
+     “claimData”: "ixo:ImpactClaimData"
+     "reason": "ixo:ImpactReason",
+     "result": "ixo:ImpactResult",
+
+     "signatureChain": "sec:SignatureChain"
 }
 
 ```
-
-
-
-
-
