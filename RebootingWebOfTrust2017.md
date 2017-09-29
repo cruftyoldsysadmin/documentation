@@ -213,4 +213,5 @@ We would like to invite collaborators to help further develop this specification
 - Is a Verifiable Impact Claim a subtype of a Verifiable Claim or should the Verifiable Claim be extended to include claims about events as well as subjects?
 - In some cases, an Impact Claim could contain "sub claims" (i.e. the device used might make a claim on location where the claim was made). How should this be handled?
 - We will be capturing beneficiary information with minimal data.  Should we create DID's for the beneficiary and act as their guardian? How can we merge multiple DIDs for the same beneficiary?
+- Where should the Verifiable Impact Claim work be hosted to make it a standard?
 
