@@ -54,7 +54,7 @@ How a verifiable Impact Claim compares with a  Verifiable claim:
 ### Impact claim processing ecosystem
 This section outlines the set of roles and as part of the ecosystem where impact claims are processed. We distinguish the essential roles of the core actors and the relationships between them including the way these actors interact. The following roles are introduced in this specification:
 
-![Impact Claim Pocess](./diagrams/datamodel-impactClaimProcess.png)
+![Impact Claim Process](./diagrams/datamodel-impactClaimProcess.png)
 
 ### Requirements
 The are a number of key requirements that the actors within the ecosystem must perform:
