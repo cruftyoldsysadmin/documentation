@@ -17,11 +17,11 @@ For example, a service agent could submit an impact claim that they have vaccina
 ### What is an Impact Claim
 An Impact Claim is a Verifiable Claim stating that an **impact service** has been delivered by a **service agent**.  It draws from the work done by the [W3C Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/) and also follows the standards and structures of the [Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/). It is useful to understand the basic terminology and structure of an impact claim.
 
-An impact claim is made up of the following key elements:
+A verifiable impact claim maps from a Verifiable claim as follows:
 
 ![Impact Claim](../diagrams/datamodel-impactClaim.png)
 
-##Terminlology##
+## Terminlology ##
 
 **impact claim**
 > A statement made by an entity about an event. A verifiable impact claim is a claim that is effectively tamper-proof and whose authorship can be cryptographically verified.
