@@ -20,8 +20,6 @@ A prototype data model for Impact Claims is described below. We are interested t
 
 # Impact Claim
 
-***
-
 ### _Public Working Draft dated 21 September 2017_
 **Editors**
 
