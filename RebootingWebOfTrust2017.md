@@ -16,8 +16,7 @@ We use the popular term ‘High-Definition’ to describe information outputs th
 
 A prototype data model for Impact Claims is described below. We are interested to review this as a canonical equivalent to or derivative of the Verifiable Claims data model. We are also keen to address a number of outstanding specification and technical implementation questions (outlined at the end of this paper) that have arisen through our initial phase of work.
 
-We would like to invite collaborators to help further develop this specification and to consider if this use-case could feed into the W3C Verifiable Claims standardisation process.
-
+***
 
 # Impact Claim
 
@@ -204,3 +203,16 @@ This section defines how the data model described in Data Model Section is reali
 [Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/)
 
 [Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/)
+
+***
+
+## Collaboration ##
+
+We would like to invite collaborators to help further develop this specification and to consider if this use-case could feed into the W3C Verifiable Claims standardisation process.
+
+### Questions ###
+
+- Is a Verifiable Impact Claim a subtype of a Verifiable Claim or should the Verifiable Claim be extended to include claims about events as well as subjects?
+- In some cases, an Impact Claim could contain "sub claims" (i.e. the device used might make a claim on location where the claim was made). How should this be handled?
+- We will be capturing beneficiary information with minimal data.  Should we create DID's for the beneficiary and act as their guardian? How can we merge multiple DIDs for the same beneficiary?
+
