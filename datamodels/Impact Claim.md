@@ -178,3 +178,8 @@ This section defines how the data model described in Data Model Section is reali
 }
 
 ```
+
+## References ##
+[Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/)
+
+[Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/). It is useful to understand the basic 
