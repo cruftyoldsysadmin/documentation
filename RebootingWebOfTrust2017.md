@@ -3,89 +3,91 @@
 ### _Public Working Draft dated 21 September 2017_
 Cedric Franz (Trustlab), Dr Shaun Conway (ixo Foundation)
 
-Impact Claims are a new use-case for Verifiable Claims and the DID specification. We propose this could become a standard that will transform how information gets collected, evaluated, valued and exchanged to optimise Sustainable Development impacts.
+**Impact Claims** are a new use-case for Verifiable Claims and the DID specification. We propose this could become a standard that will transform how information gets collected, evaluated, valued and exchanged to optimise Sustainable Development impacts.
 
 The context for this is the UN’s 17 Global Goals to end poverty, protect the planet, and ensure prosperity for all, by 2030. To create a world that counts, the UN Secretary-General has called for a data revolution for sustainable development.
-The prototype Impact Claims specification is a core part of the ixo Protocol that provides a decentralised mechanism to generate verified impact data as a fungible asset that can be traded for funding and other forms of value-exchange. This protocol increases the accountability and transparency of impact funding and service provision, whilst also generating a dynamic data commons for sustainable development. See the ixo White Paper for more information.
+The prototype Impact Claims specification is a core part of the **ixo Protocol** that provides a decentralised mechanism to generate verified impact data as a fungible asset that can be traded for funding and other forms of value-exchange. This protocol increases the accountability and transparency of impact funding and service provision, whilst also generating a dynamic data commons for sustainable development. See the ixo White Paper for more information.
 
 ![Archetype Process](./diagrams/datamodel-AchetypeProcess.png)
 
-The ixo protocol follows the archetypical process for transforming raw data into valuable, classified data assets, through an evaluation process, as depicted in the figure. It is interesting to think that this generic pattern applies to virtually any type of information. For instance, music files that are evaluated or curated by listeners applying star-ratings. 
-The use-case we describe here could be extended to any evaluation process where the identities of service agents, evaluation agents, beneficiaries and purchasers is of some consequence. We are interested to explore the generalisability of this model, which could be thought of as Verifiable Claims about facts that are extrinsic to the identities of the subject/s or participants in an event or process. This contrasts with the established use of Verifiable Claims about facts that are intrinsic to the identity of the subject/s of the claim.
+The ixo protocol follows the archetypical process for transforming raw data into valuable, classified data assets, through an evaluation process, as depicted in the figure. It is interesting to think that this generic pattern applies to virtually any type of information. For instance, when music files are evaluated or curated by listeners applying star-ratings. 
+The use-case we describe here could be extended to any evaluation process where the identities of service agents, evaluation agents, beneficiaries and purchasers is of some consequence. 
+We are interested to explore the generalisability of this model, which could be thought of as Verifiable Claims about facts that are extrinsic to the identities of the subject/s or participants in an event or process. This contrasts with the established use of Verifiable Claims about facts that are intrinsic to the identity of the subject/s of the claim.
 
 In the case of Impact Claims, data inputs are semantically structured using a data model that we have derived from the Verifiable Claims standard. Claims are evaluated through a decentralised impact exchange mechanism, using a system of Ethereum Blockchain smart contracts to coordinate and incentivise participants to process and verify the claims data in this way. The evaluation can be carried out by identified human evaluation agents (augmented with software tools), or entirely conducted by identified software oracles. As claims pass the evaluation requirements, this produces valuable Verified Impact Claims Data and the tokenized representation of the data, which gets recorded as transactions in a distributed public ledger.
 
-We use the popular term ‘High-Definition’ to describe information outputs that are produced in this. This is higher-resolution because all data points resolve to unique identifiers (using the DID spec) and it is higher-fidelity because the data gets reliably structured (using semantically defined linked-data schemas), as well as cryptographically authenticated and secured.
+We use the popular term *High-Definition* to describe information outputs that are produced through this process. This is *higher-resolution* because all data points resolve to unique identifiers (using the DID spec) and it is *higher-fidelity* because the data gets reliably structured (using semantically defined linked-data schemas), as well as cryptographically authenticated and secured.
 
 A prototype data model for Impact Claims is described below. We are interested to review this as a canonical equivalent to or derivative of the Verifiable Claims data model. We are also keen to address a number of outstanding specification and technical implementation questions (outlined at the end of this paper) that have arisen through our initial phase of work.
 
 ***
 
-# Impact Claim Data Model
+# Impact Claims Data Model
 
-The Impact Claim data model is derived from the Verifiable Claim standard that is currently under consideration by the [W3C Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/). This incorporates standards such as [Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/).
+The Impact Claims data model is derived from the Verifiable Claim standard that is currently under consideration by the [W3C Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/). This incorporates standards such as [Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/).
 Impact Claims are distinctive in that they record structured information about the delivery of impact services and/or goods by identified **service agents**, to identified **beneficiaries**.
 It is useful to understand the basic terminology and structure of an Impact Claim.
 
-How a verifiable Impact Claim compares with a  Verifiable claim:
+How Impact Claims compare with Verifiable Claims:
 
 ![Impact Claim](./diagrams/datamodel-impactClaim.png)
 
 ## Terminlology ##
 
-**impact claim**
-> A statement made by an entity about an event that involves an identified subject. The claim is effectively tamper-proof as this is cryptographically secured. The identity of the author is cryptographically authenticated by a digital signature.
+**impact claims**
+> Statements made by an entity about an event that involves an identified subject. The claim is effectively tamper-proof as this is cryptographically secured. The identity of the author is cryptographically authenticated by a digital signature.
 
 **entity**
-> An identifiable person, organization, concept, or device that has a provable existence.
+> An identifiable person, organization, concept, or device with a provable existence.
 
 **holder**
-> An entity that is in control of one or more verifiable impact claims. Typically a holder is also the issuer of the verifiable impact claims that they issued.
+> An entity that is in control of one or more verifiable impact claims. Typically a holder is also the issuer of their verifiable impact claims.
 
 **issuer**
-> An entity that creates a verifiable impact claim, associates it with a particular event, and transmits it to a holder.  For Impact Claims, this is typically a **service agent**
+> An entity that creates verifiable impact claims, associates these with a particular event, and transmits the claims to a holder.  For Impact Claims, this is typically a **service agent**
 
 **service agent**
-> An entity that delivers an impact service and/or goods.  The entity could be a person or a machine. *Examples: nurse administring a vaccinantion; fingerprint scanner recording attendance*
+> An entity that delivers a services and/or goods that result in sustainable development impacts.  The entity could be a person or a machine. *Examples: nurse administring a vaccinantion; fingerprint scanner recording attendance*
 
 **evaluation agent**
-> An entity that undertakes an evaluation processes to verify an Impact Claim. This could be a manual task performed by a person and/or automated and augmented by a software agent.
+> An entity that undertakes an evaluation processes to verify Impact Claims. This could be a manual task performed by a person and/or automated and augmented by a software agent.
 
-### Impact claim processing ecosystem
-This section outlines the set of roles and as part of the ecosystem where impact claims are processed. We distinguish the essential roles of the core actors and the relationships between them including the way these actors interact. The following roles are introduced in this specification:
+### Impact claim processing requirements
 
-![Impact Claim Process](./diagrams/datamodel-impactClaimProcess.png)
+This section outlines the roles and relationships between identified participants that are required to process Impact Claims.
 
-### Requirements
-The are a number of key requirements that the actors within the ecosystem must perform:
+![Impact Claim Pocess](./diagrams/datamodel-impactClaimProcess.png)
 
-The **holder** must receive and store impact claims from the **service agent**
 
-The **holder** mediates the transmission of the impact claims between the service agent and the evaluation agent
+A **service agent** creates Impact Claims
 
-Impact claims must be associated with an impact **indicator** and not particular services
+A **holder** receives and stores Impact Claims from the **service agent**
+
+The **holder** mediates the transmission of Impact claims between the service agents and evaluation agents
+
+Impact claims are associated with **impact indicators**
 
 **Service agents** should be able to easily control and own their own identifiers
 
 **Holders** must be able to freely choose and change the agents they employ to help them manage and share their impact claims.
 
 ### Data Model
-Every Impact Claim must contain the following information
+Impact Claims contain the following information in a structured linked-data model:
 
-**claim data**
-> A set of data elements captured by an entity. An impact claim is a claim that is effectively tamper-proof and whose authorship can be cryptographically verified. It must include the following properties and then any other impact specific properties.
-- **templateID**: Contains an ID of the impact claim template
-- **contractID**: The ID of the contract governing these claims
-- **indicator**: To classify the metric that will be captured by this impact claim
-- **claimDate**: The date and time the impact claim was made
+**claims data**
+> A set of data elements captured by an entity. Impact claims are effectively tamper-proof. The authorship of impact claims can be cryptographically verified. Claims must include the following properties:
+- **templateID**: Hash Value of the impact claim template
+- **contractID**: Hash Value of the contract governing these claims
+- **indicator**: A standard measurement metric defined in an indicator schema
+- **claimDate**: The date and time the impact claim is made
 - **impactDate**: The date and time the impact was delivered
-- **location**: The location where the impact claim was delivered
-- **serviceAgentID**: Is the DID of the service agent that delivered the service
-- **serviceCenterID**: The DID of the center or organisation that the service agent belongs to
+- **location**: The geo-location where the impact claim was delivered
+- **serviceAgentID**: The DID of the service agent
+- **serviceID**: The DID of an entity with which the service agent is associated
 - **reason**: A text field descibing why this impact was delivered.  This is captured from the impact claim template
 - **result**: The result of the outcome of the service delivery captured by the service agent
 - **beneficiaries** *(optional)*: Is a list of DIDs for beneficiaries of this impact service
-- **productsUsed** *(optional)*: Is an array of the product identifiers of any products used in the delivery of the impact service.  This could be a barcode or other number identifying the product
+- **productsUsed** *(optional)*: An array of the product identifiers for commodities used in the delivery of the impact
 
 **metadata**
 > A set of metadata that is included with the claim that captures information regarding how, what, where and when the claim event occurred
@@ -189,21 +191,22 @@ This section defines how the data model described in Data Model Section is reali
 
 ```
 
-## References ##
-[Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/)
 
-[Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/)
-
-***
-
-## Collaboration ##
+## Next steps ##
 
 We would like to invite collaborators to help further develop this specification and to consider if this use-case could feed into the W3C Verifiable Claims standardisation process.
 
 ### Questions ###
 
-- Is a Verifiable Impact Claim a subtype of a Verifiable Claim or should the Verifiable Claim be extended to include claims about events as well as subjects?
-- In some cases, an Impact Claim could contain "sub claims" (i.e. the device used might make a claim on location where the claim was made). How should this be handled?
-- We will be capturing beneficiary information with minimal data.  Should we create DID's for the beneficiary and act as their guardian? How can we merge multiple DIDs for the same beneficiary?
-- Where should the Verifiable Impact Claim work be hosted to make it a standard?
+1. Is a Verifiable Impact Claim a subtype of a Verifiable Claim or should the Verifiable Claim be extended to include claims about events as well as subjects?
+2. How to represent nested claims (for instance, when a device generates a claim within a service-delivery process)
+3. How to bundle or connect a series of Impact Claims?
+4. When new DID records are created for the same entity (such as a beneficiary), how to link together the claims so that these can be associated with the entity and avoid duplications?
+5. Could Impact Claims be introduced to the W3C standards Verifiable Claims process?
 
+## References ##
+[Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/)
+
+[Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/)
+
+[A World That Counts: Mobilising The Data Revolution for Sustainable Development](http://www.undatarevolution.org/report/)
