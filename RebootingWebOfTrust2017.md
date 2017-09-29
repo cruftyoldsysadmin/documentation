@@ -1,14 +1,17 @@
 # Verifiable Claims of Impact #
 
+### _Public Working Draft dated 21 September 2017_
+Cedric Franz (Trustlab), Dr Shaun Conway (ixo Foundation)
 
-Impact Claims are a new use-case for Verifiable Claims and the DID specification. We propose this could become a standard that will transform how information gets collected, evaluated, valued and exchanged to optimise sustainable development impacts.
+Impact Claims are a new use-case for Verifiable Claims and the DID specification. We propose this could become a standard that will transform how information gets collected, evaluated, valued and exchanged to optimise Sustainable Development impacts.
 
 The context for this is the UN’s 17 Global Goals to end poverty, protect the planet, and ensure prosperity for all, by 2030. To create a world that counts, the UN Secretary-General has called for a data revolution for sustainable development.
 The prototype Impact Claims specification is a core part of the ixo Protocol that provides a decentralised mechanism to generate verified impact data as a fungible asset that can be traded for funding and other forms of value-exchange. This protocol increases the accountability and transparency of impact funding and service provision, whilst also generating a dynamic data commons for sustainable development. See the ixo White Paper for more information.
 
 ![Archetype Process](./diagrams/datamodel-AchetypeProcess.png)
 
-The ixo protocol follows the archetypical process for transforming raw data into valuable, classified data assets, through an evaluation process, as depicted in the figure. It is interesting to think that this generic pattern applies to virtually any type of information. For instance, music files that are evaluated or curated by listeners applying star-ratings. The use-case we describe here could be extended to any evaluation process where the identities of service agents, evaluation agents, beneficiaries and purchasers is of some consequence. We are interested to explore the generalisability of this model, which could be thought of as Verifiable Claims about facts that are extrinsic to the identities of the subject/s or participants in an event or process. This contrasts with the established use of Verifiable Claims about facts that are intrinsic to the identity of the subject/s of the claim.
+The ixo protocol follows the archetypical process for transforming raw data into valuable, classified data assets, through an evaluation process, as depicted in the figure. It is interesting to think that this generic pattern applies to virtually any type of information. For instance, music files that are evaluated or curated by listeners applying star-ratings. 
+The use-case we describe here could be extended to any evaluation process where the identities of service agents, evaluation agents, beneficiaries and purchasers is of some consequence. We are interested to explore the generalisability of this model, which could be thought of as Verifiable Claims about facts that are extrinsic to the identities of the subject/s or participants in an event or process. This contrasts with the established use of Verifiable Claims about facts that are intrinsic to the identity of the subject/s of the claim.
 
 In the case of Impact Claims, data inputs are semantically structured using a data model that we have derived from the Verifiable Claims standard. Claims are evaluated through a decentralised impact exchange mechanism, using a system of Ethereum Blockchain smart contracts to coordinate and incentivise participants to process and verify the claims data in this way. The evaluation can be carried out by identified human evaluation agents (augmented with software tools), or entirely conducted by identified software oracles. As claims pass the evaluation requirements, this produces valuable Verified Impact Claims Data and the tokenized representation of the data, which gets recorded as transactions in a distributed public ledger.
 
@@ -18,46 +21,35 @@ A prototype data model for Impact Claims is described below. We are interested t
 
 ***
 
-# Impact Claim
+# Impact Claim Data Model
 
-### _Public Working Draft dated 21 September 2017_
-**Editors**
+The Impact Claim data model is derived from the Verifiable Claim standard that is currently under consideration by the [W3C Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/). This incorporates standards such as [Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/).
+Impact Claims are distinctive in that they record structured information about the delivery of impact services and/or goods by identified **service agents**, to identified **beneficiaries**.
+It is useful to understand the basic terminology and structure of an Impact Claim.
 
-Cedric Franz
-
-Shaun Conway
-
-## Introduction
-Granting the proof that an impact has been deliver by a service agent is a key component of the ixo protocol.  It requires an evaluation process to ensure the service delivery took place.  In this process, the **service agent** submits a claim for evaluation and an **evaluation agent** either verifies or denies the **impact claim** based on the evaluation of the data contained within the claim and by using other external data.
-
-For example, a service agent could submit an impact claim that they have vaccinated a particular person for malaria.  The claim would include the data, location barcode of the malaria vile, beneficiary information etc. This specification provides a standard way to express these claims on the Web in a way that is cryptographically secure, privacy respecting, and automatically verifiable.
-
-### What is an Impact Claim
-An Impact Claim is a Verifiable Claim stating that an **impact service** has been delivered by a **service agent**.  It draws from the work done by the [W3C Verifiable Claims Working Group](https://www.w3.org/TR/verifiable-claims-data-model/) and also follows the standards and structures of the [Linked Data Signatures 1.0 Draft](https://w3c-dvcg.github.io/ld-signatures/). It is useful to understand the basic terminology and structure of an impact claim.
-
-A verifiable impact claim maps from a Verifiable claim as follows:
+How a verifiable Impact Claim compares with a  Verifiable claim:
 
 ![Impact Claim](./diagrams/datamodel-impactClaim.png)
 
 ## Terminlology ##
 
 **impact claim**
-> A statement made by an entity about an event. A verifiable impact claim is a claim that is effectively tamper-proof and whose authorship can be cryptographically verified.
+> A statement made by an entity about an event that involves an identified subject. The claim is effectively tamper-proof as this is cryptographically secured. The identity of the author is cryptographically authenticated by a digital signature.
 
 **entity**
-> A thing with distinct and independent existence such as a person, organization, concept, or device that triggers and event and claims it happened
+> An identifiable person, organization, concept, or device that has a provable existence.
 
 **holder**
 > An entity that is in control of one or more verifiable impact claims. Typically a holder is also the issuer of the verifiable impact claims that they issued.
 
 **issuer**
-> An entity that creates a verifiable impact claim, associates it with a particular event, and transmits it to a holder.  Typically this is a **service agent**
+> An entity that creates a verifiable impact claim, associates it with a particular event, and transmits it to a holder.  For Impact Claims, this is typically a **service agent**
 
 **service agent**
-> The service agent is an entity that provices an impact service.  The entity could be a person or a machine. *Examples: nurse administring a vaccinantion, fingerprint scanner recording attendance*
+> An entity that delivers an impact service and/or goods.  The entity could be a person or a machine. *Examples: nurse administring a vaccinantion; fingerprint scanner recording attendance*
 
 **evaluation agent**
-> An entity that receives one or more verifiable impact claims for processing. They either verify or deny a verifiable impact claim. This could be a manual task performed by a person or a machine that can evaluate the claim.
+> An entity that undertakes an evaluation processes to verify an Impact Claim. This could be a manual task performed by a person and/or automated and augmented by a software agent.
 
 ### Impact claim processing ecosystem
 This section outlines the set of roles and as part of the ecosystem where impact claims are processed. We distinguish the essential roles of the core actors and the relationships between them including the way these actors interact. The following roles are introduced in this specification:
