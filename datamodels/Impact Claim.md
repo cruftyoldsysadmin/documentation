@@ -64,7 +64,8 @@ Every Impact Claim must contain the following information
 
 **claim data**
 > A set of data elements captured by an entity. An impact claim is a claim that is effectively tamper-proof and whose authorship can be cryptographically verified. It must include the following properties and then any other impact specific properties.
-- **templateID**: Contains an IPLD reference to the impact claim template
+- **templateID**: Contains an ID of the impact claim template
+- **contractID**: The ID of the contract governing these claims
 - **indicator**: To classify the metric that will be captured by this impact claim
 - **claimDate**: The date and time the impact claim was made
 - **impactDate**: The date and time the impact was delivered
@@ -87,7 +88,7 @@ Every Impact Claim must contain the following information
 
 This section defines how the data model described in Data Model Section is realized in JSON-LD. Although syntactic mappings are only provided for these three different languages, applications and services may also use any other data representation language (XML, for example) that can support the data model.
 
-### Example Verifiable Impact Claim ###
+### Example: Verifiable Impact Claim ###
 ```json-ld
 {
   "@context": [
@@ -99,11 +100,11 @@ This section defines how the data model described in Data Model Section is reali
     "https://iris.thegiin.org/indicators",
   ],
 
-  "id": "@id",
   "type": "ImpactClaim",
 
 
-  “templateID” : "102021tDAKCERh95uGgKbJNHYp",
+  “templateID” : "0x4600a18666a9f08f2f99a79ce8734e5b6f353a91",
+  "contractID" : "0xb4b59c3acfeb9afd9398c88b2f6f003cbf29b553"
   "indicator": {
     "type": "Indicator",
     "brand": "IRIS",
@@ -149,7 +150,6 @@ This section defines how the data model described in Data Model Section is reali
 ```json-ld
 {
    "@context": {
-     "id": "@id",
      "type": "@type",
 
      "cn":  "http://schema.cnsnt.io/",
@@ -160,6 +160,7 @@ This section defines how the data model described in Data Model Section is reali
      "ind": "https://iris.thegiin.org/indicators",
 
      “templateID” : "ixo:TemplateRef"
+     “contractID” : "ixo:ContractRef"
      "indicator": ixo:ImpactIndicator"
      "claimDate": "so:Date",
      "impactDate": "so:Date",
