@@ -54,10 +54,10 @@ The **evaluation agent** must submit an evaluation claim contain the results of 
 ### Data Model
 Every Evaluation Claim must contain the following information
 
+- **issuer**: Is the DID of the evaluation agent that performed this evaluation
+- **issued**: The date and time the evaluation claim was made
 - **impactClaimID**: Contains an IPLD reference to the impact claim template
-- **evaluationDate**: The date and time the evaluation claim was made
 - **location**: The location where the evaluation claim was delivered
-- **evaluationAgentID**: Is the DID of the evaluation agent that performed this evaluation
 - **evaluationProcedure**: The procedure followed to make thie evalaution
 - **result**: One of the following results captured by the evaluation agent
   - VERIFIED
@@ -82,18 +82,18 @@ This section defines how the data model described in Data Model Section is reali
      "https://w3id.org/security/v1",
    ],
    "@type": "EvaluationClaim",
-   “impactClaimID” : <IPLD reference to unique id of the impact claim>
-   "evaluationDate": <date and time the evaluation claim was made>,
+   "issuer": <did for the evaluation agent>,
+   "issued": <date and time the evaluation claim was made>,
    "location": {
       "@type": "GeoCoordinates",
       "latitude": <latitude value>,
       "longitude": <longitude value>
    },
-   evaluationAgentId: <did for the evaluation agent>,
-   evaluationProcedure: <Evaluation procedure performed>,
-  "result": < [VERIFIED|NEUTRL|NOT_VERIFIED] >,
-  "reason": <reason for the evaluation result>,
-  "signature": [
+   “impactClaimID” : <IPLD reference to unique id of the impact claim>
+   "evaluationProcedure": <Evaluation procedure performed>,
+   "result": < [VERIFIED|NEUTRL|NOT_VERIFIED] >,
+   "reason": <reason for the evaluation result>,
+   "signature": [
     {
        "@type": <signature algorithm>,
        "created": <date and time of signature>,
