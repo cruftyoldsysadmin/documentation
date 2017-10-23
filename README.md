@@ -1,7 +1,11 @@
 # ixo Protocol Documentation
 
 ## Overview
-* Data Model
+* Decentralized Impact Exchange
+  * Data Model *(TODO)*
+* Global Impact Ledger
+  * Data Model *(TODO)*
+* JSON-LD Data Model
   * [Impact Claim](./datamodels/Impact%20Claim.md)
   * [Evaluation Claim](./datamodels/Evaluation%20Claim.md)
   * Impact Claim Template *(TODO)*
