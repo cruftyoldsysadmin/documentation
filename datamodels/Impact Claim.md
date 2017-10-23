@@ -172,7 +172,7 @@ This section defines how the data model described in Data Model Section is reali
      “contractID” : "ixo:ContractRef"
      "indicator": ixo:ImpactIndicator"
      "issued": "so:Date",
-     "claims": "ixo:ClaimSet",
+     "claims": "ixo:ClaimSet",    // array of type Claim
 }
 ```
 
