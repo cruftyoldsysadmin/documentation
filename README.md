@@ -1,7 +1,7 @@
 # ixo Protocol Documentation
 
 ## Overview
-* Decentralized Impact Exchange
+* [Decentralized Impact Exchange](./components/Decentralized%20Impact%20Exchange%20(DIX).md)
   * Data Model *(TODO)*
 * Global Impact Ledger
   * Data Model *(TODO)*
