@@ -15,6 +15,6 @@
 * Components
   * [Claim Template and Claim Template Registry](./components/Claim%20Template%20and%20Claim%20Template%20Registry.md)
 * Code Snippets
-  * [Generate Menmonic in Javascript](https://gist.github.com/cedricf/d37cb9abff0b2446757d225a43830eb8)
-  * [Generate Sovrin DID from a Menmonic in Javascript](https://gist.github.com/cedricf/ca80d320eaafda3232036d06737e587c)
+  * [Generate Mnemonic in Javascript](https://gist.github.com/cedricf/d37cb9abff0b2446757d225a43830eb8)
+  * [Generate Sovrin DID from a Mnemonic in Javascript](https://gist.github.com/cedricf/ca80d320eaafda3232036d06737e587c)
    
