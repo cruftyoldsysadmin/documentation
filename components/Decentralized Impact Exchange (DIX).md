@@ -296,22 +296,3 @@ information and value flows will optimize how Sustainable Development impacts
 are delivered and funded through decentralised networks, to accelerate progress
 towards the Global Goals.<br> Decentralised Impact Exchanges will be possible at
 all levels, as well as through local and global exchanges.
-
-In future articles we will describe how this is already beginning to happen
-using the ixo Protocol.
-
-* [Blockchain](https://medium.com/tag/blockchain?source=post)
-* [Sustainable
-Development](https://medium.com/tag/sustainable-development?source=post)
-* [Social Impact](https://medium.com/tag/social-impact?source=post)
-* [Social Impact Bonds](https://medium.com/tag/social-impact-bonds?source=post)
-* [Decentralization](https://medium.com/tag/decentralization?source=post)
-
-By clapping more or less, you can signal to us which stories really stand out.
-
-### [Lohan Spies](https://medium.com/@eax)
-
-### [ixo foundation blog](https://medium.com/ixo-foundation-blog?source=footer_card)
-
-Sharing thoughts on how blockchain and cryptocurrency can optimize impact
-projects around the world
