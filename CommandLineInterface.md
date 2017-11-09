@@ -45,7 +45,9 @@ A mnemonic if none is given then one will be generated
 ```
 
 **Scope:** root
+
 ---
+
 ### Create a User
 
 Creates a new ixo User
@@ -79,13 +81,17 @@ The ISO 3166-2 two letter country code
 ```
 
 **Scope:** root
+
 ---
+
 ### Add Capability to a User
 
 Adds a capability to an ixo User
 
 *(TODO)*
+
 ---
+
 ### Get User
 
 Returns the registered user for the supplied DID
@@ -110,7 +116,9 @@ The DID of a user
 ```
 
 **Scope:** root
+
 ---
+
 ### List Users
 
 List ixo User
@@ -144,7 +152,9 @@ List of matching users
 ```
 
 **Scope:** root
+
 ---
+
 ### Login
 
 Log the user in and change the scope to **user** scope if successful
@@ -170,7 +180,9 @@ List of matching users
 ```
 
 **Scope:** root
+
 ---
+
 ## Template Management
 
 ### Register a Template
@@ -194,7 +206,9 @@ A file that contains the impact template JSON
 ```
 
 **Scope:** user
+
 ---
+
 ### Verify a Template
 
 Verify the signature of an Impact Template matches a particular user registered on the ixo system.
@@ -219,4 +233,5 @@ The address of the template
 ```
 
 **Scope:** root
+
 ---
