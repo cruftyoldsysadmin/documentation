@@ -14,9 +14,9 @@ Commands must be executed within a particular scope.  There are two scopes defin
 #### General Usage
 *(TODO - describe the general structure of commands and thier usage e.g. shortened form vs longer form etc.)*
 
-### User Management
+## User Management
 
-#### Create a Decentralized Identity (DID)
+### Create a Decentralized Identity (DID)
 
 Creates a Sovrin DID based off a passphrase
 
@@ -46,7 +46,7 @@ A mnemonic if none is given then one will be generated
 
 **Scope:** root
 
-#### Create a User
+### Create a User
 
 Creates a new ixo User
 
@@ -80,13 +80,13 @@ The ISO 3166-2 two letter country code
 
 **Scope:** root
 
-#### Add Capability to a User
+### Add Capability to a User
 
 Adds a capability to an ixo User
 
 *(TODO)*
 
-#### Get User
+### Get User
 
 Returns the registered user for the supplied DID
 
@@ -111,7 +111,7 @@ The DID of a user
 
 **Scope:** root
 
-#### List Users
+### List Users
 
 List ixo User
 
@@ -145,7 +145,7 @@ List of matching users
 
 **Scope:** root
 
-#### Login
+### Login
 
 Log the user in and change the scope to **user** scope if successful
 
@@ -171,9 +171,9 @@ List of matching users
 
 **Scope:** root
 
-### Template Management
+## Template Management
 
-#### Register a Template
+### Register a Template
 
 Register an Impact Template with the ixo system.  The template is validated and registered to the logged in user and signed with their private key
 
@@ -195,7 +195,7 @@ A file that contains the impact template JSON
 
 **Scope:** user
 
-#### Verify a Template
+### Verify a Template
 
 Verify the signature of an Impact Template matches a particular user registered on the ixo system.
 
