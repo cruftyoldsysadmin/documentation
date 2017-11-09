@@ -16,8 +16,6 @@ Commands must be executed within a particular scope.  There are two scopes defin
 
 ## User Management
 
----
-
 ### Create a Decentralized Identity (DID)
 
 Creates a Sovrin DID based off a passphrase
@@ -187,8 +185,6 @@ List of matching users
 
 ## Template Management
 
----
-
 ### Register a Template
 
 Register an Impact Template with the ixo system.  The template is validated and registered to the logged in user and signed with their private key
@@ -215,7 +211,7 @@ A file that contains the impact template JSON
 
 ### Verify a Template
 
-Verify the signature of an Impact Template matches a particular user registered on the ixo system.
+Verify that the signature of an Impact Template matches a particular user registered on the ixo system.
 
 **Command:** registerTemplate
 
@@ -224,18 +220,145 @@ Verify the signature of an Impact Template matches a particular user registered 
 The DID of a user that created the template
 >-d, --did \<did\>
 
-The address of the template
->-t, --templateAddress \<template Address\>
+The ID of the template
+>-t, --templateId \<template ID\>
 
 **Optional Arguments:**
 
 **Return:**
 ```
 {
-  "templateID: "938be75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
+  "id: "938be75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
+  "data: {
+  	...
+  }
 }
 ```
 
 **Scope:** root
 
 ---
+
+## Decentralize Impact Exchange (DIX) Management
+
+### Register a DIX
+
+Register an DIX with the ixo system.
+
+**Command:** registerDIX
+
+**Arguments:**
+
+The description of the DIX
+>-d, --descr \<DIX description\>
+
+The uri reference to more information regarding the project
+>-u, --uri \<A URI\>
+
+The start date YYYY-MM-SS when the DIX is due to start
+>-s, --start \<start date\>
+
+The end date YYYY-MM-SS when the DIX should be finished
+>-e, --end \<end date\>
+
+The ID of the template that needs to be used for capturing impacts
+>-t, --templateId \<template ID\>
+
+The number of impacts that need to be delivered
+>-n, --number \<number of impacts\>
+
+The value of DIX project in USD
+>-v, --value \<value of the project as an integer\>
+
+The ISO 3166-2 two letter country code
+>-c, --country \<two letter country code\>
+
+**Optional Arguments:**
+
+**Return:**
+```
+{
+  "id": "a67bf66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89",
+  "data: {
+  	"description": ""
+    "uri": "",
+    "startDate": "2017-07-02",
+    "endDate": "2019-07-02",
+    "indicator": "P43527",
+    "templateId": "938be75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
+    "number": 1000,
+    "count": 0,
+    "usdValue": 40000,
+    "country": "RW",
+    "status": "NotStarted"
+  }
+}
+```
+
+**Scope:** user
+
+---
+
+### List Projects
+
+List ixo Projects
+
+**Command:** listProjects
+
+**Arguments:**
+
+**Optional Arguments:**
+
+The DID of the owner
+>-d, --did \<DID of the owner\>
+
+The indicator of the impact
+>-i, --indicator \<indicator\>
+
+The status of the project ("(N)otStarted", "(S)tarted", "(E)nded")
+>-s, --status \<status\>
+
+The ISO 3166-2 two letter country code
+>-c, --country \<two letter country code\>
+
+
+**Return:**
+List of matching users
+```
+[
+  {
+    "id": "a67bf66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89",
+    "data: {
+      "description": "Malaria vaccinations"
+      "uri": "https://impacts.com/projects/6364893",
+      "startDate": "2017-07-02",
+      "endDate": "2019-07-02",
+      "indicator": "P43527",
+      "templateId": "938be75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
+      "number": 1000,
+      "count": 0,
+      "usdValue": 40000,
+      "country": "RW",
+      "status": "NotStarted"
+    }
+  },
+  {
+    "id": "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89",
+    "data: {
+      "description": "Build school"
+      "uri": "https://impacts.com/projects/6364893",
+      "startDate": "2016-07-02",
+      "endDate": "2018-07-02",
+      "indicator": "P44428",
+      "templateId": "fe65e75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
+      "number": 3,
+      "count": 2,
+      "usdValue": 30000,
+      "country": "US",
+      "status": "Started"
+    }
+  }
+]
+```
+
+**Scope:** root
