@@ -16,6 +16,8 @@ Commands must be executed within a particular scope.  There are two scopes defin
 
 ## User Management
 
+---
+
 ### Create a Decentralized Identity (DID)
 
 Creates a Sovrin DID based off a passphrase
@@ -184,6 +186,8 @@ List of matching users
 ---
 
 ## Template Management
+
+---
 
 ### Register a Template
 
