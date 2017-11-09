@@ -183,6 +183,27 @@ List of matching users
 
 ---
 
+### Logout
+
+Log the current user out and change the scope to **root** scope if successful
+
+**Command:** logout
+
+**Arguments:**
+
+**Optional Arguments:**
+
+**Return:**
+```
+{
+   "success": "true",
+}
+```
+
+**Scope:** user
+
+---
+
 ## Template Management
 
 ### Register a Template
