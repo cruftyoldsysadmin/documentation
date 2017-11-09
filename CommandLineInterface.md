@@ -1,11 +1,10 @@
-# ixo Protocol 
-# Command Line Interface Specifications
+# ixo Protocol: Command Line Interface Specifications
 
 
 The ixo protocol commes with a command line interface to perform most of the functions that the protocol supports.  The are four broad catgories for of commands and the this document provides the specifications for each of them as well as how to install the system and run the commands.
 
 ## Installation
- _TODO_
+ _(TODO - Spec out the installation instructions for setting up this)_
  
 ## Command Line Specification
 
@@ -262,15 +261,15 @@ The ID of the template
 
 ## Decentralize Impact Exchange (DIX) Management
 
-### Register a DIX
+### Register a DIX Project
 
 Register an DIX with the ixo system.
 
-**Command:** registerDIX
+**Command:** registerProject
 
 **Arguments:**
 
-The description of the DIX
+The description of the DIX project
 >-d, --descr \<DIX description\>
 
 The uri reference to more information regarding the project
@@ -322,7 +321,7 @@ The ISO 3166-2 two letter country code
 
 ---
 
-### List Projects
+### List DIX Projects
 
 List ixo Projects
 
@@ -392,6 +391,89 @@ List of matching users
 
 ---
 
+### Add User to DIX Project
+
+Register a user to the DIX project with a particular capability.  Only users with owner capability on the dix can add capabilities
+
+**Command:** addUserToDix
+
+**Arguments:**
+
+The ID of the DIX that this claim is for
+>-d, --dixId \<dix ID\>
+
+The DID of the user being added
+>-d, --did \<DID of user\>
+
+The capability being added to the DIX project ("(O)wner, (S)ervice Agent, (F)unding Agent, (E)valuation Agent")
+>-c, --capability \<the capability\>
+
+**Optional Arguments:**
+
+**Return:**
+```
+{
+  "id": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
+  "type": ["Capability"],
+  "dixID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
+  "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+  "issued": "2016-02-08T16:02:20",
+  "capability": {
+  	"type": "FundingAgent",
+	"did": "YiZKnFYqoVcAHHYJYh4LB6",
+  },
+  "signature": {
+    "type": "RsaSignature2016",
+    "created": "2016-02-08T16:02:20",
+    "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+  }
+}
+```
+**Scope:** user
+
+---
+
+### Revoke User Capability from DIX Project
+
+Revoke a capability from the DIX project.  Only users with owner capability on the dix can revoke a capability. You can't revoke your own capability.
+
+**Command:** addUserToDix
+
+**Arguments:**
+
+The ID of the DIX that this claim is for
+>-d, --dixId \<dix ID\>
+
+The DID of the user being added
+>-d, --did \<DID of user\>
+
+The id of capability being revoked from the DIX project
+>-c, --capabilityID \<the capabilityID\>
+
+**Optional Arguments:**
+
+**Return:**
+```
+{
+  "id": "df5f66db71340c8156ec12d13efe66fbaadb78e89bf91c387a56da8bf52e584e",
+  "type": ["Revoked Capability"],
+  "dixID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
+  "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+  "issued": "2016-02-08T16:02:20",
+  "capabilityID": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
+  "signature": {
+    "type": "RsaSignature2016",
+    "created": "2016-02-08T16:02:20",
+    "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+  }
+}
+```
+**Scope:** user
+
+---
+
 ## Impact Claims Management
 
 ### Sign a Claim
@@ -413,11 +495,6 @@ The file to save the signed claim
 **Return:**
 ```
 {
-  "@context": [
-  "http://schema.org/",
-  “http://ixo.foundation/schema/”,
-  ],
-  "id": "did:method:4645621218764655"  
   "type": ["Location", "Time"],
   "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
   "issued": "2016-02-08T16:02:20",
@@ -429,13 +506,11 @@ The file to save the signed claim
     "type": "Rating",
     "ratingValue": "79"
   },
-
-  },
   "signature": {
-  "type": "RsaSignature2016",
-  "created": "2016-02-08T16:02:20",
-  "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
-  "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+    "type": "RsaSignature2016",
+    "created": "2016-02-08T16:02:20",
+    "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
   }
 }
 ```
@@ -469,7 +544,7 @@ The list of signed claims that make up this claim set
   "id": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
   "type": ["Impact Claim Set"],
   “templateID” : "fe65e75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
-  "contractID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
+  "dixID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
   "indicator": "P44428",
   "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
   "issued": "2016-02-08T16:02:20",
