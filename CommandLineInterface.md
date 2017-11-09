@@ -107,6 +107,7 @@ The DID of a user
 **Return:**
 ```
   {
+    "id: "5d52e812f53efd4d4b584eba56da8bfaadb7771938be7c3871c71340c2d1d625",
     "did": "FDF5TJwDDw8BHGXEB4deXA",
     "name": "Jane Smith",
     "country": "US",
@@ -136,12 +137,14 @@ List of matching users
 ```
 [
   {
+    "id: "2e812f53efd4d4b584eba56da938be75d58bfaadb7771c3871c71340c2d1d625",
     "did": "FYqoVcAHHYiZKnYJYh4LB6",
     "name": "ABC Inc.",
     "country": "US",
     "publicKey": "8vvVSkZFU8bHYFXJnZ6j34xX7Yj2DcdndzjNsWLN5HDQ"
   },
   {
+    "id: "5d52e812f53efd4d4b584eba56da8bfaadb7771938be7c3871c71340c2d1d625",
     "did": "FDF5TJwDDw8BHGXEB4deXA",
     "name": "Jane Smith",
     "country": "US",
