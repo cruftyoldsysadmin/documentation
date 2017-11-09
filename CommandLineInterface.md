@@ -280,6 +280,8 @@ The ISO 3166-2 two letter country code
 {
   "id": "a67bf66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89",
   "data: {
+  	"ownerDid": "FYqoVcAHHYiZKnYJYh4LB6",
+    "createdOn": "2017-03-3T13:02:32"
   	"description": ""
     "uri": "",
     "startDate": "2017-07-02",
@@ -329,6 +331,8 @@ List of matching users
   {
     "id": "a67bf66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89",
     "data: {
+      "ownerDid": "FYqoVcAHHYiZKnYJYh4LB6",
+      "createdOn": "2017-03-03T13:02:32"
       "description": "Malaria vaccinations"
       "uri": "https://impacts.com/projects/6364893",
       "startDate": "2017-07-02",
@@ -345,6 +349,8 @@ List of matching users
   {
     "id": "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89",
     "data: {
+      "ownerDid": "FYqoVcAHHYiZKnYJYh4LB6",
+      "createdOn": "2016-06-30T15:12:02"
       "description": "Build school"
       "uri": "https://impacts.com/projects/6364893",
       "startDate": "2016-07-02",
@@ -362,3 +368,182 @@ List of matching users
 ```
 
 **Scope:** root
+
+---
+
+## Impact Claims Management
+
+### Sign a Claim
+
+Sign a claim
+
+**Command:** signClaim
+
+**Arguments:**
+
+The file containing the claim data
+>-i, --input \<file containing claim JSON\>
+
+The file to save the signed claim
+>-o, --output \<File to output signed claim\>
+
+**Optional Arguments:**
+
+**Return:**
+```
+{
+  "@context": [
+  "http://schema.org/",
+  “http://ixo.foundation/schema/”,
+  ],
+  "id": "did:method:4645621218764655"  
+  "type": ["Location", "Time"],
+  "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+  "issued": "2016-02-08T16:02:20",
+  "claim": {
+    "serviceCenterID": "FYqojhvfSiZKnYJYh4LB6",
+    "productsUsed": [],
+    "reason": "Water provided",
+    "result": {
+    "type": "Rating",
+    "ratingValue": "79"
+  },
+
+  },
+  "signature": {
+  "type": "RsaSignature2016",
+  "created": "2016-02-08T16:02:20",
+  "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+  "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+  }
+}
+```
+
+**Scope:** user
+
+---
+
+### Submit a Claim Set
+
+The loggned in user submits a Claim Set to the DIX contract.  Before the claim set is accepted a number of checks are done:
+* The issuer of the claimSet is validated against the DIX contract to ensure they may submit claims
+* Each claim is validated to ensure that it conforms to template registered for this DIX contract
+* The signatures of each individual claim is verified against the issuer for that claim.
+
+**Command:** submitClaimSet
+
+**Arguments:**
+
+The ID of the DIX that this claim is for
+>-d, --dixId \<dix ID\>
+
+The list of signed claims that make up this claim set
+>-f, --files \<one or more file that contain signed claims\>
+
+**Optional Arguments:**
+
+**Return:**
+```
+{
+  "id": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
+  "type": ["Impact Claim Set"],
+  “templateID” : "fe65e75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
+  "contractID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
+  "indicator": "P44428",
+  "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+  "issued": "2016-02-08T16:02:20",
+  "claims": [
+      {
+      "id": "c71340c2d1de89bff5f66dba56da8bfaadb7891c387152e8156e3efe66fb584e"  
+      "type": ["Location", "Time"],
+      "issuer": "FnYJYh4LBYqoVcAHHYiZK6",
+      "issued": "2016-02-08T16:02:20",
+      "claim": {
+        "geo": {
+          "location": {
+            "latitude": "12.01156874",
+            "longitude": "-175.57177874"
+          },
+        "timestamp": "2016-02-08T16:02:20"
+      }
+      "signature": {
+        "type": "RsaSignature2016",
+        "created": "2016-02-08T16:02:20",
+        "creator": "FnYJYh4LBYqoVcAHHYiZK6#key/1",
+        "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+      }
+    },
+    {
+      "id": "752e8156e3e2d1de89bff51340cca56da8bfaadb7891c3871f66dbfe66fb584e"  
+      "type": ["Location", "Time"],
+      "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+      "issued": "2016-02-08T16:02:20",
+      "claim": {
+        "serviceCenterID": "FYqojhvfSiZKnYJYh4LB6",
+        "productsUsed": [],
+        "reason": "Water provided",
+        "result": {
+        "type": "Rating",
+        "ratingValue": "79"
+      },
+
+      },
+      "signature": {
+      "type": "RsaSignature2016",
+      "created": "2016-02-08T16:02:20",
+      "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+      "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+      }
+    }
+  ]
+}
+
+```
+
+**Scope:** user
+
+---
+### Evaluate a Claim Set
+
+Evaluate a Claim Set.
+
+**Command:** evaluateClaimSet
+
+**Arguments:**
+
+The ID of the claimSet
+>-c, --claimsetId \<claimSet ID\>
+
+The result of the evaluation ("(V)erified", "(F)ailed", "(U)ndecided")
+>-r, --result \<Result of the evaluation\>
+
+**Optional Arguments:**
+
+A comment relating to the result of evaluation 
+>-c, --comment \<Comment\>
+
+**Return:**
+```
+{
+  "id": "daad5f66db71340caadb7891c387a5efe89bff5f66db71340ce66fb584e",
+  "type": "Evaluation Claim",
+  "issuer": "FncAHHYiYJYh4LBYqoVZK6",
+  "issued": "2016-04-18T12:02:20",
+  “claimSetID” : "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
+  "evaluationProcedure": <Evaluation procedure performed>,
+  "result": "Verified",
+  "comment": "Verification successful.",
+  "signature": {
+    "type": "RsaSignature2016",
+    "created": "2016-04-18T12:02:20",
+    "creator": "FncAHHYiYJYh4LBYqoVZK6#key/1",
+    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+  }
+}
+```
+
+**Scope:** user
+
+---
+
+
