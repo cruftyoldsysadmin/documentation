@@ -83,14 +83,6 @@ The ISO 3166-2 two letter country code
 
 ---
 
-### Add Capability to a User
-
-Adds a capability to an ixo User
-
-*(TODO)*
-
----
-
 ### Get User
 
 Returns the registered user for the supplied DID
@@ -233,7 +225,7 @@ A file that contains the impact template JSON
 
 Verify that the signature of an Impact Template matches a particular user registered on the ixo system.
 
-**Command:** registerTemplate
+**Command:** verifyTemplate
 
 **Arguments:**
 
@@ -395,7 +387,7 @@ List of matching users
 
 Register a user to the DIX project with a particular capability.  Only users with owner capability on the dix can add capabilities
 
-**Command:** addUserToDix
+**Command:** addUserToProject
 
 **Arguments:**
 
@@ -438,7 +430,7 @@ The capability being added to the DIX project ("(O)wner, (S)ervice Agent, (F)und
 
 Revoke a capability from the DIX project.  Only users with owner capability on the dix can revoke a capability. You can't revoke your own capability.
 
-**Command:** addUserToDix
+**Command:** revokeUserFromProject
 
 **Arguments:**
 
