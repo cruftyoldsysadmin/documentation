@@ -8,8 +8,6 @@ The ixo protocol commes with a command line interface to perform most of the fun
  
 ## Command Line Specification
 
-Commands must be executed within a particular scope.  There are two scopes defined for the  ixo protocil commands the first scope is the root scope and the second scope is as a loggined in user.  For the purposes of this interface we call these scopes **root** and **user** scope.  Some of the commands can only be executed in **user** scope and requires a user to be 'logged in'.  The commands that require **user** scope are mostly related to commands where a user needs to sign some information with their private key.  All commands that can be executed in **root** scope can also be executed in **user** scope.
-
 #### General Usage
 *(TODO - describe the general structure of commands and thier usage e.g. shortened form vs longer form etc.)*
 
@@ -24,6 +22,8 @@ Creates a Sovrin DID based off a passphrase
 **Arguments:**
 
 **Optional Arguments:**
+The name of a file to output the user to
+>-o, --output \<filename\>
 
 A mnemonic if none is given then one will be generated
 >-m, --mnemonic \<mnemonic\>
@@ -42,10 +42,6 @@ A mnemonic if none is given then one will be generated
   }
 }
 ```
-
-**Scope:** root
-
----
 
 ### Create a User
 
@@ -79,10 +75,6 @@ The ISO 3166-2 two letter country code
 }
 ```
 
-**Scope:** root
-
----
-
 ### Get User
 
 Returns the registered user for the supplied DID
@@ -106,10 +98,6 @@ The DID of a user
     "publicKey": "8kEwLE5d1X1RVXwRL2YEZj896LoGTfp4z2pqYZzGVp4r"
   }
 ```
-
-**Scope:** root
-
----
 
 ### List Users
 
@@ -145,58 +133,8 @@ List of matching users
 ]
 ```
 
-**Scope:** root
-
 ---
 
-### Login
-
-Log the user in and change the scope to **user** scope if successful
-
-**Command:** login
-
-**Arguments:**
-
-The DID of a user
->-d, --did \<did\>
-
-A mnemonic if none is given then one will be generated
->-m, --mnemonic \<mnemonic\>
-
-**Optional Arguments:**
-
-**Return:**
-List of matching users
-```
-{
-   "did": "FYqoVcAHHYiZKnYJYh4LB6",
-}
-```
-
-**Scope:** root
-
----
-
-### Logout
-
-Log the current user out and change the scope to **root** scope if successful
-
-**Command:** logout
-
-**Arguments:**
-
-**Optional Arguments:**
-
-**Return:**
-```
-{
-   "success": "true",
-}
-```
-
-**Scope:** user
-
----
 
 ## Template Management
 
@@ -208,10 +146,13 @@ Register an Impact Template with the ixo system.  The template is validated and 
 
 **Arguments:**
 
-A file that contains the impact template JSON
->-t, --template \<filename\>
+The file DID doc file for the user performing this request
+>-u, --user \<userDoc\>
 
 **Optional Arguments:**
+
+A file that contains the signed impact template JSON or read from stdIn
+>-i, --input \<filename\>
 
 **Return:**
 ```
@@ -219,10 +160,6 @@ A file that contains the impact template JSON
   "templateId: "938be75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
 }
 ```
-
-**Scope:** user
-
----
 
 ### Verify a Template
 
@@ -250,10 +187,6 @@ The ID of the template
 }
 ```
 
-**Scope:** root
-
----
-
 ## Decentralize Impact Exchange (DIX) Management
 
 ### Register a DIX Project
@@ -264,11 +197,14 @@ Register an DIX with the ixo system.
 
 **Arguments:**
 
+The file DID doc file for the user performing this request
+>-u, --user \<userDoc\>
+
 The description of the DIX project
 >-d, --descr \<DIX description\>
 
-The uri reference to more information regarding the project
->-u, --uri \<A URI\>
+The uri reference link to more information regarding the project
+>-l, --link \<A URI\>
 
 The start date YYYY-MM-SS when the DIX is due to start
 >-s, --start \<start date\>
@@ -311,10 +247,6 @@ The ISO 3166-2 two letter country code
   }
 }
 ```
-
-**Scope:** user
-
----
 
 ### List DIX Projects
 
@@ -382,10 +314,6 @@ List of matching users
 ]
 ```
 
-**Scope:** root
-
----
-
 ### Add User to DIX Project
 
 Register a user to the DIX project with a particular capability.  Only users with owner capability on the dix can add capabilities
@@ -393,6 +321,9 @@ Register a user to the DIX project with a particular capability.  Only users wit
 **Command:** addUserToProject
 
 **Arguments:**
+
+The file DID doc file for the user performing this request
+>-u, --user \<userDoc\>
 
 The ID of the DIX that this claim is for
 >-d, --dixId \<dix ID\>
@@ -437,6 +368,9 @@ Revoke a capability from the DIX project.  Only users with owner capability on t
 
 **Arguments:**
 
+The file DID doc file for the user performing this request
+>-u, --user \<userDoc\>
+
 The ID of the DIX that this claim is for
 >-d, --dixId \<dix ID\>
 
@@ -465,9 +399,6 @@ The id of capability being revoked from the DIX project
   }
 }
 ```
-**Scope:** user
-
----
 
 ## Impact Claims Management
 
@@ -479,13 +410,17 @@ Sign a claim
 
 **Arguments:**
 
-The file containing the claim data
->-i, --input \<file containing claim JSON\>
-
-The file to save the signed claim
->-o, --output \<File to output signed claim\>
+The file DID doc file for the user performing this request
+>-u, --user \<userDoc\>
 
 **Optional Arguments:**
+
+The file containing the claim data or it is read from stdin
+>-i, --input \<file containing claim JSON\>
+
+The file to save the signed claim or it is written to stdout
+>-o, --output \<File to output signed claim\>
+
 
 **Return:**
 ```
@@ -510,10 +445,6 @@ The file to save the signed claim
 }
 ```
 
-**Scope:** user
-
----
-
 ### Submit a Claim Set
 
 The loggned in user submits a Claim Set to the DIX contract.  Before the claim set is accepted a number of checks are done:
@@ -524,6 +455,9 @@ The loggned in user submits a Claim Set to the DIX contract.  Before the claim s
 **Command:** submitClaimSet
 
 **Arguments:**
+
+The file DID doc file for the user performing this request
+>-u, --user \<userDoc\>
 
 The ID of the DIX that this claim is for
 >-d, --dixId \<dix ID\>
@@ -591,9 +525,6 @@ The list of signed claims that make up this claim set
 
 ```
 
-**Scope:** user
-
----
 ### Evaluate a Claim Set
 
 Evaluate a Claim Set.
@@ -601,6 +532,9 @@ Evaluate a Claim Set.
 **Command:** evaluateClaimSet
 
 **Arguments:**
+
+The file DID doc file for the user performing this request
+>-u, --user \<userDoc\>
 
 The ID of the claimSet
 >-c, --claimsetId \<claimSet ID\>
@@ -632,9 +566,3 @@ A comment relating to the result of evaluation
   }
 }
 ```
-
-**Scope:** user
-
----
-
-
