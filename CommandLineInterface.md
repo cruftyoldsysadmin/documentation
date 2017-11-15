@@ -206,10 +206,10 @@ The description of the DIX project
 The uri reference link to more information regarding the project
 >-l, --link \<A URI\>
 
-The start date YYYY-MM-SS when the DIX is due to start
+The start date YYYY-MM-DD when the DIX is due to start
 >-s, --start \<start date\>
 
-The end date YYYY-MM-SS when the DIX should be finished
+The end date YYYY-MM-DD when the DIX should be finished
 >-e, --end \<end date\>
 
 The ID of the template that needs to be used for capturing impacts
