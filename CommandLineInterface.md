@@ -3,6 +3,8 @@
 
 The ixo protocol commes with a command line interface to perform most of the functions that the protocol supports.  The are four broad catgories for of commands and the this document provides the specifications for each of them as well as how to install the system and run the commands.
 
+[Flow Diagrams](./diagrams/flow.png)
+
 ## Installation
  _(TODO - Spec out the installation instructions for setting up this)_
  
@@ -11,7 +13,7 @@ The ixo protocol commes with a command line interface to perform most of the fun
 #### General Usage
 *(TODO - describe the general structure of commands and thier usage e.g. shortened form vs longer form etc.)*
 
-## User Management
+## Agent Management
 
 ### Create a Decentralized Identity (DID)
 
@@ -77,7 +79,7 @@ The ISO 3166-2 two letter country code
 
 ### Get Agent
 
-Returns the registered user for the supplied DID
+Returns the registered agent for the supplied DID
 
 **Command:** getAgent
 
@@ -203,7 +205,7 @@ Verify that the signature of an Impact Template matches a particular agent regis
 
 **Arguments:**
 
-The DID of a user that created the template
+The DID of a agent that created the template
 >-d, --did \<did\>
 
 The ID of the template
@@ -350,7 +352,7 @@ The ISO 3166-2 two letter country code
 
 
 **Return:**
-List of matching users
+List of matching agents
 ```
 [
   {
@@ -475,16 +477,13 @@ A file that contains the signed request to add an agent to a DIX project JSON or
   }
 }
 ```
-### Create Revoke Agent from DIX Project
+### Create Revoke Agent from DIX Project Request
 
 Revoke an agent for a role from the DIX project.  Only agents with owner role on the dix can revoke an agent for a role. You can't revoke your own capability.
 
-**Command:** createRevokeAgentFromProject
+**Command:** createRevokeAgentFromProjectRequest
 
 **Arguments:**
-
-The file DID doc file for the agent performing this request
->-a, --agent \<agentDoc\>
 
 The ID of the DIX 
 >-p, --dixProjectID \<dix ID\>
@@ -500,18 +499,9 @@ The id of capability being revoked from the DIX project
 **Return:**
 ```
 {
-  "id": "df5f66db71340c8156ec12d13efe66fbaadb78e89bf91c387a56da8bf52e584e",
   "type": ["Revoked Role"],
   "dixID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
-  "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
-  "issued": "2016-02-08T16:02:20",
   "roleID": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
-  "signature": {
-    "type": "RsaSignature2016",
-    "created": "2016-02-08T16:02:20",
-    "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
-    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
-  }
 }
 ```
 
@@ -523,19 +513,14 @@ Revoke an agent for a role from the DIX project.  Only agents with owner role on
 
 **Arguments:**
 
-The file DID doc file for the agent performing this request
->-a, --agent \<agentDoc\>
-
-The ID of the DIX 
->-p, --dixProjectID \<dix ID\>
-
-The DID of the agent being added
->-d, --did \<DID of agent\>
-
-The id of capability being revoked from the DIX project
->-r, --roleID \<the RoleID\>
+The DID of a agent
+>-d, --did \<did\>
 
 **Optional Arguments:**
+
+A file that contains the signed request to revoke an agent from a DIX project JSON or read from stdIn
+>-i, --input \<filename\>
+
 
 **Return:**
 ```
@@ -559,30 +544,12 @@ The id of capability being revoked from the DIX project
 
 ### Sign a Claim
 
-Sign a claim
+Sign a claim use the sign document with the claim data
 
-**Command:** signClaim
-
-**Arguments:**
-
-The file DID doc file for the agent performing this request
->-a, --agent \<agentDoc\>
-
-**Optional Arguments:**
-
-The file containing the claim data or it is read from stdin
->-i, --input \<file containing claim JSON\>
-
-The file to save the signed claim or it is written to stdout
->-o, --output \<File to output signed claim\>
-
-
-**Return:**
+**Example Claim:**
 ```
 {
   "type": ["Location", "Time"],
-  "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
-  "issued": "2016-02-08T16:02:20",
   "claim": {
     "serviceCenterID": "FYqojhvfSiZKnYJYh4LB6",
     "productsUsed": [],
@@ -592,12 +559,6 @@ The file to save the signed claim or it is written to stdout
       "ratingValue": "79"
     }
   },
-  "signature": {
-    "type": "RsaSignature2016",
-    "created": "2016-02-08T16:02:20",
-    "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
-    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
-  }
 }
 ```
 
@@ -608,9 +569,6 @@ The creates a signed Claim Set for a DIX contract.
 **Command:** createClaimSet
 
 **Arguments:**
-
-The file DID doc file for the agent signing this claimset
->-a, --agent \<agentDoc\>
 
 The ID of the DIX project that this claimSet is for
 >-p, --dixProjectID \<dix ID\>
@@ -630,8 +588,6 @@ The file to save the signed claim set or it is written to stdout
   "id": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
   "type": ["Impact Claim Set"],
   "dixID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
-  "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
-  "issued": "2016-02-08T16:02:20",
   "claims": [
       {
       "id": "c71340c2d1de89bff5f66dba56da8bfaadb7891c387152e8156e3efe66fb584e"  
@@ -675,20 +631,13 @@ The file to save the signed claim set or it is written to stdout
       "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
       }
     }
-  ],
-  "signature": {
-    "type": "RsaSignature2016",
-    "created": "2016-02-08T16:02:20",
-    "creator": "FnYJYh4LBYqoVcAHHYiZK6#key/1",
-    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
-  }
-
+  ]
 }
 
 ```
 ### Submit a Claim Set
 
-The loggned in user submits a Claim Set to the DIX contract.  Before the claim set is accepted a number of checks are done:
+The loggned in agent submits a Claim Set to the DIX contract.  Before the claim set is accepted a number of checks are done:
 * The issuer of the claimSet is validated against the DIX contract to ensure they may submit claims
 * Each claim is validated to ensure that it conforms to template registered for this DIX contract
 * The signatures of each individual claim is verified against the issuer for that claim.
@@ -781,8 +730,8 @@ Create an evaluate a Claim Set.
 
 **Arguments:**
 
-The file DID doc file for the user performing this request
->-u, --user \<userDoc\>
+The file DID doc file for the agent performing this request
+>-u, --agent \<agentDoc\>
 
 The ID of the claimSet
 >-c, --claimsetId \<claimSet ID\>
