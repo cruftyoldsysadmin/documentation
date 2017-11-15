@@ -11,7 +11,7 @@ The ixo protocol commes with a command line interface to perform most of the fun
 #### General Usage
 *(TODO - describe the general structure of commands and thier usage e.g. shortened form vs longer form etc.)*
 
-## Agent Management
+## User Management
 
 ### Create a Decentralized Identity (DID)
 
@@ -77,7 +77,7 @@ The ISO 3166-2 two letter country code
 
 ### Get Agent
 
-Returns the registered agent for the supplied DID
+Returns the registered user for the supplied DID
 
 **Command:** getAgent
 
@@ -138,6 +138,50 @@ List of matching agents
 
 ## Template Management
 
+### Sign a Template
+
+Sign a template
+
+**Command:** signTemplate
+
+**Arguments:**
+
+The file DID doc file for the agent performing this request
+>-a, --agent \<agentDoc\>
+
+**Optional Arguments:**
+
+The file containing the template or it is read from stdin
+>-i, --input \<file containing template JSON\>
+
+The file to save the signed template or it is written to stdout
+>-o, --output \<File to output signed template\>
+
+
+**Return:**
+```
+{
+  "type": ["Impact Template"],
+  "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+  "issued": "2016-02-08T16:02:20",
+  "claim": {
+    "serviceCenterID": "",
+    "productsUsed": [],
+    "reason": "",
+    "result": {
+      "type": "",
+      "ratingValue": " "
+    }
+  },
+  "signature": {
+    "type": "RsaSignature2016",
+    "created": "2016-02-08T16:02:20",
+    "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+  }
+}
+```
+
 ### Register a Template
 
 Register a signed Impact Template with the ixo system.  The template is validated and registered to the logged in agent
@@ -169,7 +213,7 @@ Verify that the signature of an Impact Template matches a particular agent regis
 
 **Arguments:**
 
-The DID of a agent that created the template
+The DID of a user that created the template
 >-d, --did \<did\>
 
 The ID of the template
@@ -324,7 +368,7 @@ The ISO 3166-2 two letter country code
 
 
 **Return:**
-List of matching agents
+List of matching users
 ```
 [
   {
@@ -388,7 +432,7 @@ Register an agent to the DIX project for a particular role.  Only agents with ow
 **Arguments:**
 
 The file DID doc file for the agent performing this request
->-a, --agent \<agentDoc\>
+>-a, --agent \<userDoc\>
 
 The ID of the DIX
 >-p, --dixProjectID \<dix ID\>
@@ -494,8 +538,9 @@ The file to save the signed claim or it is written to stdout
     "productsUsed": [],
     "reason": "Water provided",
     "result": {
-    "type": "Rating",
-    "ratingValue": "79"
+      "type": "Rating",
+      "ratingValue": "79"
+    }
   },
   "signature": {
     "type": "RsaSignature2016",
@@ -568,9 +613,9 @@ The file to save the signed claim set or it is written to stdout
         "productsUsed": [],
         "reason": "Water provided",
         "result": {
-        "type": "Rating",
-        "ratingValue": "79"
-      },
+          "type": "Rating",
+          "ratingValue": "79"
+        },
 
       },
       "signature": {
@@ -593,7 +638,7 @@ The file to save the signed claim set or it is written to stdout
 ```
 ### Submit a Claim Set
 
-The loggned in agent submits a Claim Set to the DIX contract.  Before the claim set is accepted a number of checks are done:
+The loggned in user submits a Claim Set to the DIX contract.  Before the claim set is accepted a number of checks are done:
 * The issuer of the claimSet is validated against the DIX contract to ensure they may submit claims
 * Each claim is validated to ensure that it conforms to template registered for this DIX contract
 * The signatures of each individual claim is verified against the issuer for that claim.
@@ -686,8 +731,8 @@ Create an evaluate a Claim Set.
 
 **Arguments:**
 
-The file DID doc file for the agent performing this request
->-a, --agent \<agentDoc\>
+The file DID doc file for the user performing this request
+>-u, --user \<userDoc\>
 
 The ID of the claimSet
 >-c, --claimsetId \<claimSet ID\>
@@ -756,3 +801,5 @@ The file containing the claim data or it is read from stdin
   }
 }
 ```
+
+
