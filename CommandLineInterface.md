@@ -11,7 +11,7 @@ The ixo protocol commes with a command line interface to perform most of the fun
 #### General Usage
 *(TODO - describe the general structure of commands and thier usage e.g. shortened form vs longer form etc.)*
 
-## User Management
+## Agent Management
 
 ### Create a Decentralized Identity (DID)
 
@@ -22,7 +22,7 @@ Creates a Sovrin DID based off a passphrase
 **Arguments:**
 
 **Optional Arguments:**
-The name of a file to output the user to
+The name of a file to output the agent to
 >-o, --output \<filename\>
 
 A mnemonic if none is given then one will be generated
@@ -43,15 +43,15 @@ A mnemonic if none is given then one will be generated
 }
 ```
 
-### Create a User
+### Create a ixo Agent
 
-Creates a new ixo User
+Creates a new ixo Agent
 
-**Command:** createUser
+**Command:** createAgent
 
 **Arguments:**
 
-The DID of the user
+The DID of the agetn
 >-d, --did \<did\>
 
 The public key for the supplied DID
@@ -75,15 +75,15 @@ The ISO 3166-2 two letter country code
 }
 ```
 
-### Get User
+### Get Agent
 
-Returns the registered user for the supplied DID
+Returns the registered agent for the supplied DID
 
-**Command:** getUser
+**Command:** getAgent
 
 **Arguments:**
 
-The DID of a user
+The DID of a agent
 >-d, --did \<did\>
 
 **Optional Arguments:**
@@ -99,11 +99,11 @@ The DID of a user
   }
 ```
 
-### List Users
+### List Agents
 
-List ixo User
+List ixo Agents
 
-**Command:** listUsers
+**Command:** listAgents
 
 **Arguments:**
 
@@ -113,7 +113,7 @@ The ISO 3166-2 two letter country code
 **Optional Arguments:**
 
 **Return:**
-List of matching users
+List of matching agents
 ```
 [
   {
@@ -140,14 +140,14 @@ List of matching users
 
 ### Register a Template
 
-Register an Impact Template with the ixo system.  The template is validated and registered to the logged in user and signed with their private key
+Register a signed Impact Template with the ixo system.  The template is validated and registered to the logged in agent
 
 **Command:** registerTemplate
 
 **Arguments:**
 
-The file DID doc file for the user performing this request
->-u, --user \<userDoc\>
+The DID of a agent
+>-d, --did \<did\>
 
 **Optional Arguments:**
 
@@ -163,13 +163,13 @@ A file that contains the signed impact template JSON or read from stdIn
 
 ### Verify a Template
 
-Verify that the signature of an Impact Template matches a particular user registered on the ixo system.
+Verify that the signature of an Impact Template matches a particular agent registered on the ixo system.
 
 **Command:** verifyTemplate
 
 **Arguments:**
 
-The DID of a user that created the template
+The DID of a agent that created the template
 >-d, --did \<did\>
 
 The ID of the template
@@ -189,16 +189,16 @@ The ID of the template
 
 ## Decentralize Impact Exchange (DIX) Management
 
-### Register a DIX Project
+### Create a DIX Project
 
-Register an DIX with the ixo system.
+Create a DIX project with the ixo system (This is done on the client)
 
-**Command:** registerProject
+**Command:** createProject
 
 **Arguments:**
 
-The file DID doc file for the user performing this request
->-u, --user \<userDoc\>
+The file DID doc file for the agent performing this request
+>-a, --agent \<agentDoc\>
 
 The description of the DIX project
 >-d, --descr \<DIX description\>
@@ -206,10 +206,10 @@ The description of the DIX project
 The uri reference link to more information regarding the project
 >-l, --link \<A URI\>
 
-The start date YYYY-MM-SS when the DIX is due to start
+The start date yyyy-mm-dd when the DIX is due to start
 >-s, --start \<start date\>
 
-The end date YYYY-MM-SS when the DIX should be finished
+The end date yyyy-mm-dd when the DIX should be finished
 >-e, --end \<end date\>
 
 The ID of the template that needs to be used for capturing impacts
@@ -226,14 +226,60 @@ The ISO 3166-2 two letter country code
 
 **Optional Arguments:**
 
+The name of a file to output the signed DIX project to or stdout
+>-o, --output \<filename\>
+
+**Return:**
+```
+{
+  "ownerDid": "FYqoVcAHHYiZKnYJYh4LB6",
+  "createdOn": "2017-03-3T13:02:32"
+  "description": ""
+  "uri": "",
+  "startDate": "2017-07-02",
+  "endDate": "2019-07-02",
+  "indicator": "P43527",
+  "templateId": "938be75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
+  "number": 1000,
+  "count": 0,
+  "usdValue": 40000,
+  "country": "RW",
+  "status": "NotStarted",
+  "signature": {
+    "type": "RsaSignature2016",
+    "created": "2016-02-08T16:02:20",
+    "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+  }
+
+}
+```
+### Register a DIX Project
+
+Register an DIX with the ixo system.
+
+**Command:** submitProject
+
+**Arguments:**
+
+The DID of a agent
+>-d, --did \<did\>
+
+**Optional Arguments:**
+
+A file that contains the signed DIX project JSON or read from stdIn
+>-i, --input \<filename\>
+
+**Optional Arguments:**
+
 **Return:**
 ```
 {
   "id": "a67bf66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89",
   "data: {
-  	"ownerDid": "FYqoVcAHHYiZKnYJYh4LB6",
+    "ownerDid": "FYqoVcAHHYiZKnYJYh4LB6",
     "createdOn": "2017-03-3T13:02:32"
-  	"description": ""
+    "description": ""
     "uri": "",
     "startDate": "2017-07-02",
     "endDate": "2019-07-02",
@@ -243,7 +289,13 @@ The ISO 3166-2 two letter country code
     "count": 0,
     "usdValue": 40000,
     "country": "RW",
-    "status": "NotStarted"
+    "status": "NotStarted",
+    "signature": {
+      "type": "RsaSignature2016",
+      "created": "2016-02-08T16:02:20",
+      "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+      "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+    }
   }
 }
 ```
@@ -272,7 +324,7 @@ The ISO 3166-2 two letter country code
 
 
 **Return:**
-List of matching users
+List of matching agents
 ```
 [
   {
@@ -290,7 +342,14 @@ List of matching users
       "count": 0,
       "usdValue": 40000,
       "country": "RW",
-      "status": "NotStarted"
+      "status": "NotStarted",
+      "signature": {
+        "type": "RsaSignature2016",
+        "created": "2016-02-08T16:02:20",
+        "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+        "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+      }
+
     }
   },
   {
@@ -308,31 +367,37 @@ List of matching users
       "count": 2,
       "usdValue": 30000,
       "country": "US",
-      "status": "Started"
+      "status": "Started",
+      "signature": {
+        "type": "RsaSignature2016",
+        "created": "2016-02-08T16:02:20",
+        "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+        "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+      }
     }
   }
 ]
 ```
 
-### Add User to DIX Project
+### Add Agent to DIX Project
 
-Register a user to the DIX project with a particular capability.  Only users with owner capability on the dix can add capabilities
+Register an agent to the DIX project for a particular role.  Only agents with owner role on the dix can add an agent
 
-**Command:** addUserToProject
+**Command:** addAgentToProject
 
 **Arguments:**
 
-The file DID doc file for the user performing this request
->-u, --user \<userDoc\>
+The file DID doc file for the agent performing this request
+>-a, --agent \<agentDoc\>
 
-The ID of the DIX that this claim is for
->-d, --dixId \<dix ID\>
+The ID of the DIX
+>-p, --dixProjectID \<dix ID\>
 
-The DID of the user being added
->-d, --did \<DID of user\>
+The DID of the agent being added
+>-d, --did \<DID of agent\>
 
-The capability being added to the DIX project ("(O)wner, (S)ervice Agent, (F)unding Agent, (E)valuation Agent")
->-c, --capability \<the capability\>
+The role of the agent that is being added to the DIX project ("(O)wner, (S)ervice Agent, (F)unding Agent, (E)valuation Agent")
+>-r, --role \<the role\>
 
 **Optional Arguments:**
 
@@ -340,11 +405,11 @@ The capability being added to the DIX project ("(O)wner, (S)ervice Agent, (F)und
 ```
 {
   "id": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
-  "type": ["Capability"],
+  "type": ["Role"],
   "dixID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
   "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
   "issued": "2016-02-08T16:02:20",
-  "capability": {
+  "role": {
   	"type": "FundingAgent",
 	"did": "YiZKnFYqoVcAHHYJYh4LB6",
   },
@@ -356,29 +421,25 @@ The capability being added to the DIX project ("(O)wner, (S)ervice Agent, (F)und
   }
 }
 ```
-**Scope:** user
+### Revoke Agent for a Role from DIX Project
 
----
+Revoke an agent for a role from the DIX project.  Only agents with owner role on the dix can revoke an agent for a role. You can't revoke your own capability.
 
-### Revoke User Capability from DIX Project
-
-Revoke a capability from the DIX project.  Only users with owner capability on the dix can revoke a capability. You can't revoke your own capability.
-
-**Command:** revokeUserFromProject
+**Command:** revokeAgentFromProject
 
 **Arguments:**
 
-The file DID doc file for the user performing this request
->-u, --user \<userDoc\>
+The file DID doc file for the agent performing this request
+>-a, --agent \<agentDoc\>
 
-The ID of the DIX that this claim is for
->-d, --dixId \<dix ID\>
+The ID of the DIX 
+>-p, --dixProjectID \<dix ID\>
 
-The DID of the user being added
->-d, --did \<DID of user\>
+The DID of the agent being added
+>-d, --did \<DID of agent\>
 
 The id of capability being revoked from the DIX project
->-c, --capabilityID \<the capabilityID\>
+>-r, --roleID \<the RoleID\>
 
 **Optional Arguments:**
 
@@ -386,11 +447,11 @@ The id of capability being revoked from the DIX project
 ```
 {
   "id": "df5f66db71340c8156ec12d13efe66fbaadb78e89bf91c387a56da8bf52e584e",
-  "type": ["Revoked Capability"],
+  "type": ["Revoked Role"],
   "dixID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
   "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
   "issued": "2016-02-08T16:02:20",
-  "capabilityID": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
+  "roleID": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
   "signature": {
     "type": "RsaSignature2016",
     "created": "2016-02-08T16:02:20",
@@ -410,8 +471,8 @@ Sign a claim
 
 **Arguments:**
 
-The file DID doc file for the user performing this request
->-u, --user \<userDoc\>
+The file DID doc file for the agent performing this request
+>-a, --agent \<agentDoc\>
 
 **Optional Arguments:**
 
@@ -445,9 +506,94 @@ The file to save the signed claim or it is written to stdout
 }
 ```
 
+### Create a Claim Set
+
+The creates a signed Claim Set for a DIX contract.  
+
+**Command:** createClaimSet
+
+**Arguments:**
+
+The file DID doc file for the agent signing this claimset
+>-a, --agent \<agentDoc\>
+
+The ID of the DIX project that this claimSet is for
+>-p, --dixProjectID \<dix ID\>
+
+The list of signed claims that make up this claim set
+>-f, --files \<one or more file that contain signed claims\>
+
+**Optional Arguments:**
+
+The file to save the signed claim set or it is written to stdout
+>-o, --output \<File to output signed claimSet\>
+
+
+**Return:**
+```
+{
+  "id": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
+  "type": ["Impact Claim Set"],
+  "dixID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
+  "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+  "issued": "2016-02-08T16:02:20",
+  "claims": [
+      {
+      "id": "c71340c2d1de89bff5f66dba56da8bfaadb7891c387152e8156e3efe66fb584e"  
+      "type": ["Location", "Time"],
+      "issuer": "FnYJYh4LBYqoVcAHHYiZK6",
+      "issued": "2016-02-08T16:02:20",
+      "claim": {
+        "geo": {
+          "location": {
+            "latitude": "12.01156874",
+            "longitude": "-175.57177874"
+          },
+        "timestamp": "2016-02-08T16:02:20"
+      }
+      "signature": {
+        "type": "RsaSignature2016",
+        "created": "2016-02-08T16:02:20",
+        "creator": "FnYJYh4LBYqoVcAHHYiZK6#key/1",
+        "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+      }
+    },
+    {
+      "id": "752e8156e3e2d1de89bff51340cca56da8bfaadb7891c3871f66dbfe66fb584e"  
+      "type": ["Location", "Time"],
+      "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+      "issued": "2016-02-08T16:02:20",
+      "claim": {
+        "serviceCenterID": "FYqojhvfSiZKnYJYh4LB6",
+        "productsUsed": [],
+        "reason": "Water provided",
+        "result": {
+        "type": "Rating",
+        "ratingValue": "79"
+      },
+
+      },
+      "signature": {
+      "type": "RsaSignature2016",
+      "created": "2016-02-08T16:02:20",
+      "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+      "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+      }
+    }
+  ],
+  "signature": {
+    "type": "RsaSignature2016",
+    "created": "2016-02-08T16:02:20",
+    "creator": "FnYJYh4LBYqoVcAHHYiZK6#key/1",
+    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+  }
+
+}
+
+```
 ### Submit a Claim Set
 
-The loggned in user submits a Claim Set to the DIX contract.  Before the claim set is accepted a number of checks are done:
+The loggned in agent submits a Claim Set to the DIX contract.  Before the claim set is accepted a number of checks are done:
 * The issuer of the claimSet is validated against the DIX contract to ensure they may submit claims
 * Each claim is validated to ensure that it conforms to template registered for this DIX contract
 * The signatures of each individual claim is verified against the issuer for that claim.
@@ -456,16 +602,17 @@ The loggned in user submits a Claim Set to the DIX contract.  Before the claim s
 
 **Arguments:**
 
-The file DID doc file for the user performing this request
->-u, --user \<userDoc\>
+The DID of the agent submitting the claimset
+>-d, --did \<DID of agent\>
 
 The ID of the DIX that this claim is for
->-d, --dixId \<dix ID\>
-
-The list of signed claims that make up this claim set
->-f, --files \<one or more file that contain signed claims\>
+>-p, --dixProjectID \<dix ID\>
 
 **Optional Arguments:**
+
+The file containing the claim data or it is read from stdin
+>-i, --input \<file containing signed claimSet\>
+
 
 **Return:**
 ```
@@ -520,21 +667,27 @@ The list of signed claims that make up this claim set
       "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
       }
     }
-  ]
+  ],
+  "signature": {
+    "type": "RsaSignature2016",
+    "created": "2016-02-08T16:02:20",
+    "creator": "FnYJYh4LBYqoVcAHHYiZK6#key/1",
+    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+  }
 }
 
 ```
 
-### Evaluate a Claim Set
+### Create an Evaluation for Claim Set
 
-Evaluate a Claim Set.
+Create an evaluate a Claim Set.
 
-**Command:** evaluateClaimSet
+**Command:** createEvaluation
 
 **Arguments:**
 
-The file DID doc file for the user performing this request
->-u, --user \<userDoc\>
+The file DID doc file for the agent performing this request
+>-a, --agent \<agentDoc\>
 
 The ID of the claimSet
 >-c, --claimsetId \<claimSet ID\>
@@ -545,7 +698,44 @@ The result of the evaluation ("(V)erified", "(F)ailed", "(U)ndecided")
 **Optional Arguments:**
 
 A comment relating to the result of evaluation 
->-c, --comment \<Comment\>
+>-n, --comment \<Comment\>
+
+**Return:**
+```
+{
+  "type": "Evaluation Claim",
+  "issuer": "FncAHHYiYJYh4LBYqoVZK6",
+  "issued": "2016-04-18T12:02:20",
+  “claimSetID” : "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
+  "evaluationProcedure": <Evaluation procedure performed>,
+  "result": "Verified",
+  "comment": "Verification successful.",
+  "signature": {
+    "type": "RsaSignature2016",
+    "created": "2016-04-18T12:02:20",
+    "creator": "FncAHHYiYJYh4LBYqoVZK6#key/1",
+    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+  }
+}
+```
+### Submit an Evaluation for Claim Set
+
+Submit an evaluation for a Claim Set.
+
+**Command:** submitClaimSet
+
+**Arguments:**
+
+The DID of the agent submitting the claimset
+>-d, --did \<DID of agent\>
+
+The ID of the claimSet
+>-c, --claimsetId \<claimSet ID\>
+
+**Optional Arguments:**
+
+The file containing the claim data or it is read from stdin
+>-i, --input \<file containing signed claimSet\>
 
 **Return:**
 ```
