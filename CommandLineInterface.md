@@ -133,16 +133,11 @@ List of matching agents
 ]
 ```
 
----
+### Sign a Document
 
+Sign document
 
-## Template Management
-
-### Sign a Template
-
-Sign a template
-
-**Command:** signTemplate
+**Command:** sign
 
 **Arguments:**
 
@@ -151,28 +146,20 @@ The file DID doc file for the agent performing this request
 
 **Optional Arguments:**
 
-The file containing the template or it is read from stdin
+The file containing the json document or it is read from stdin
 >-i, --input \<file containing template JSON\>
 
-The file to save the signed template or it is written to stdout
+The file to save the signed json document  or it is written to stdout
 >-o, --output \<File to output signed template\>
 
 
 **Return:**
 ```
 {
-  "type": ["Impact Template"],
+  <some json>
+  
   "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
   "issued": "2016-02-08T16:02:20",
-  "claim": {
-    "serviceCenterID": "",
-    "productsUsed": [],
-    "reason": "",
-    "result": {
-      "type": "",
-      "ratingValue": " "
-    }
-  },
   "signature": {
     "type": "RsaSignature2016",
     "created": "2016-02-08T16:02:20",
@@ -181,6 +168,9 @@ The file to save the signed template or it is written to stdout
   }
 }
 ```
+
+
+## Template Management
 
 ### Register a Template
 
@@ -241,9 +231,6 @@ Create a DIX project with the ixo system (This is done on the client)
 
 **Arguments:**
 
-The file DID doc file for the agent performing this request
->-a, --agent \<agentDoc\>
-
 The description of the DIX project
 >-d, --descr \<DIX description\>
 
@@ -288,19 +275,12 @@ The name of a file to output the signed DIX project to or stdout
   "count": 0,
   "usdValue": 40000,
   "country": "RW",
-  "status": "NotStarted",
-  "signature": {
-    "type": "RsaSignature2016",
-    "created": "2016-02-08T16:02:20",
-    "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
-    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
-  }
-
+  "status": "NotStarted"
 }
 ```
-### Register a DIX Project
+### Submit a DIX Project
 
-Register an DIX with the ixo system.
+Submit a DIX Project on the ixo system.
 
 **Command:** submitProject
 
@@ -321,6 +301,8 @@ A file that contains the signed DIX project JSON or read from stdIn
 {
   "id": "a67bf66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89",
   "data: {
+    "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+    "issued": "2016-02-08T16:02:20",
     "ownerDid": "FYqoVcAHHYiZKnYJYh4LB6",
     "createdOn": "2017-03-3T13:02:32"
     "description": ""
@@ -374,6 +356,8 @@ List of matching users
   {
     "id": "a67bf66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89",
     "data: {
+      "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+      "issued": "2016-02-08T16:02:20",
       "ownerDid": "FYqoVcAHHYiZKnYJYh4LB6",
       "createdOn": "2017-03-03T13:02:32"
       "description": "Malaria vaccinations"
@@ -399,6 +383,8 @@ List of matching users
   {
     "id": "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89",
     "data: {
+      "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+      "issued": "2016-02-08T16:02:20",
       "ownerDid": "FYqoVcAHHYiZKnYJYh4LB6",
       "createdOn": "2016-06-30T15:12:02"
       "description": "Build school"
@@ -423,16 +409,13 @@ List of matching users
 ]
 ```
 
-### Add Agent to DIX Project
+### Create Add Agent to DIX Project Request
 
 Register an agent to the DIX project for a particular role.  Only agents with owner role on the dix can add an agent
 
-**Command:** addAgentToProject
+**Command:** createAddAgentToProjectRequest
 
 **Arguments:**
-
-The file DID doc file for the agent performing this request
->-a, --agent \<userDoc\>
 
 The ID of the DIX
 >-p, --dixProjectID \<dix ID\>
@@ -444,6 +427,33 @@ The role of the agent that is being added to the DIX project ("(O)wner, (S)ervic
 >-r, --role \<the role\>
 
 **Optional Arguments:**
+
+**Return:**
+```
+{
+  "type": ["Role"],
+  "dixID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
+  "role": {
+  	"type": "FundingAgent",
+	"did": "YiZKnFYqoVcAHHYJYh4LB6",
+  }
+}
+```
+### Add Agent to DIX Project
+
+Register an agent to the DIX project for a particular role.  Only agents with owner role on the dix can add an agent
+
+**Command:** addAgentToProject
+
+**Arguments:**
+
+The DID of a agent
+>-d, --did \<did\>
+
+**Optional Arguments:**
+
+A file that contains the signed request to add an agent to a DIX project JSON or read from stdIn
+>-i, --input \<filename\>
 
 **Return:**
 ```
@@ -465,6 +475,46 @@ The role of the agent that is being added to the DIX project ("(O)wner, (S)ervic
   }
 }
 ```
+### Create Revoke Agent from DIX Project
+
+Revoke an agent for a role from the DIX project.  Only agents with owner role on the dix can revoke an agent for a role. You can't revoke your own capability.
+
+**Command:** createRevokeAgentFromProject
+
+**Arguments:**
+
+The file DID doc file for the agent performing this request
+>-a, --agent \<agentDoc\>
+
+The ID of the DIX 
+>-p, --dixProjectID \<dix ID\>
+
+The DID of the agent being added
+>-d, --did \<DID of agent\>
+
+The id of capability being revoked from the DIX project
+>-r, --roleID \<the RoleID\>
+
+**Optional Arguments:**
+
+**Return:**
+```
+{
+  "id": "df5f66db71340c8156ec12d13efe66fbaadb78e89bf91c387a56da8bf52e584e",
+  "type": ["Revoked Role"],
+  "dixID" : "bff5f66d52e8156e3efe66fb584eba56da8bfaadb7891c3871c71340c2d1de89"
+  "issuer": "FYqoVcAHHYiZKnYJYh4LB6",
+  "issued": "2016-02-08T16:02:20",
+  "roleID": "de89bff5f66db71340caadb7891c387a56da8bf52e8156ec12d13efe66fb584e",
+  "signature": {
+    "type": "RsaSignature2016",
+    "created": "2016-02-08T16:02:20",
+    "creator": "FYqoVcAHHYiZKnYJYh4LB6#key/1",
+    "signatureValue": "IOmA4R7TfhkYTYW8...CBMq2/gi25s="
+  }
+}
+```
+
 ### Revoke Agent for a Role from DIX Project
 
 Revoke an agent for a role from the DIX project.  Only agents with owner role on the dix can revoke an agent for a role. You can't revoke your own capability.
