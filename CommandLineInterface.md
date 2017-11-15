@@ -3,7 +3,7 @@
 
 The ixo protocol commes with a command line interface to perform most of the functions that the protocol supports.  The are four broad catgories for of commands and the this document provides the specifications for each of them as well as how to install the system and run the commands.
 
-[Flow Diagrams](./diagrams/flow.png)
+[Flow Diagrams](./diagrams/Flows.png)
 
 ## Installation
  _(TODO - Spec out the installation instructions for setting up this)_
