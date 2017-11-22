@@ -146,8 +146,6 @@ Sign document
 The file DID doc file for the agent performing this request
 >-a, --agent \<agentDoc\>
 
-**Optional Arguments:**
-
 The file containing the json document or it is read from stdin
 >-i, --input \<file containing template JSON\>
 
@@ -184,8 +182,6 @@ Register a signed Impact Template with the ixo system.  The template is validate
 
 The DID of a agent
 >-d, --did \<did\>
-
-**Optional Arguments:**
 
 A file that contains the signed impact template JSON or read from stdIn
 >-i, --input \<filename\>
