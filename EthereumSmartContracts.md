@@ -6,17 +6,28 @@ There are a number of smart contracts that need to reside in the public Ethereum
 ### ixo Token
 The ixo token is an ERC20 Token.  It will be used for paying the agents involved in the DIX projects.  The total supply of ixo Tokens will be fixed, but tokens will be minted as incentives for certain impacts that are delivered and tokens might be burned when validating node misbehave.
 
-### Distribution Contract
-The distribution contract is responsible for managing the distribution of the ixo tokens that will be allocated during the token generation event.
+### Token Distribution Contract
+The distribution contract is responsible for managing the distribution of the ixo tokens that will be allocated during the presale event and the public token generation event.
+
+### Mint/Burn Auth
+This contract contains the rules that define who can trigger the mint and burning of tokens.  This would normally be the validator Voting Contract
 
 ### Decentralized Impact Exchange Project
-At the core of the ixo protocol is the Decentralixed Impact Exchange Project.  The smart contract for this part of the platform manages the stake of ixo tokens allocated to the project, the allocation amounts payable to the different entities involved in the project and the distribution of those tokens triggered by certain events that take place durign the lifecycle of the project. The ixo tokens are normally staked by the funding agent and after certain events occur on the project, these tokens are distributed to the funding agent, the service agents and the evaluation agents or any other party incentivised on the project.
+At the core of the ixo protocol is the Decentralixed Impact Exchange Project.  This smart contract manages the stake of ixo tokens allocated to the project and the allocation of ixo tokens that are payable to the different entities involved in the project when certain events occur during the lifecycle of the project. 
+The ixo tokens are normally staked by the funding agent and after certain events occur on the project, these tokens are distributed to the funding agent, the service agents and the evaluation agents or any other party incentivised on the project.
+The events that cause the payments of ixo tokens are as follows:
+- Evaluation of a claim
+- Completion of the project
+
+### DIX Auth
+This contract contains the rules that define who can trigger the payments.  This would normally be the validator Voting Contract
+(This could potentially be merged with **Mint/Burn Auth** contract)
 
 ### Validator Voting
 This contract is used to coordinate calls from the permissioned ixo network to ensure that there is consensus on any calls made to other ixo smart contracts.
 
 ### Validator Proof Of Stake
-The validator nodes that validate transactions on the ixo network are requird to stake ixo Tokens, which they will lose falsely validate a transaction.  The stake is also used to determine how many votes each validator can cast when voting for a block.
+The validator nodes that validate transactions on the ixo network are required to stake ixo Tokens, which they will lose if they falsely validate a transaction.  The stake is also used to determine how many votes each validator can cast when voting for a block.
 
 ## Technology
 ### Key Principles
