@@ -29,6 +29,6 @@ In order to comply with the above principles we will use the contracts from the 
 
 We will use the DSAuthority contract to test whether certain function calls can be made by users or other contracts.
 
-[Smart Contract Dependancies](./diagrams/SmartContracts.png)
+![Smart Contract Dependancies](./diagrams/SmartContracts.png)
 
 
