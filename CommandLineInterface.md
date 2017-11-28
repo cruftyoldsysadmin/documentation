@@ -229,6 +229,9 @@ Create a DIX project with the ixo system (This is done on the client)
 
 **Arguments:**
 
+The DID of a agent
+>-d, --did \<did\>
+
 The description of the DIX project
 >-d, --descr \<DIX description\>
 
