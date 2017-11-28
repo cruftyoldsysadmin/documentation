@@ -190,6 +190,11 @@ A file that contains the signed impact template JSON or read from stdIn
 ```
 {
   "templateId: "938be75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
+  "indicator": "P1261.23",
+  "created": "2016-02-08T16:02:20Z",
+  "creator": "did:example:8uQhQMGzWxR8vw5P3UWH1j#key/1",
+
+  <some json>
 }
 ```
 
