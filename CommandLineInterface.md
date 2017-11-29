@@ -255,6 +255,9 @@ The ID of the template that needs to be used for capturing impacts
 The number of impacts that need to be delivered
 >-n, --number \<number of impacts\>
 
+The tolerance for failed claims (e.g 0.1 means 10% might fail evaluation)
+>-l, --tolerance \<tolerance\>
+
 The value of DIX project in USD
 >-v, --value \<value of the project as an integer\>
 
@@ -278,7 +281,7 @@ The name of a file to output the signed DIX project to or stdout
   "indicator": "P43527",
   "templateId": "938be75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
   "number": 1000,
-  "count": 0,
+  "tolerance": 0.1,
   "usdValue": 40000,
   "country": "RW",
   "status": "NotStarted"
@@ -318,7 +321,7 @@ A file that contains the signed DIX project JSON or read from stdIn
     "indicator": "P43527",
     "templateId": "938be75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
     "number": 1000,
-    "count": 0,
+    "tolerance": 0.1,
     "usdValue": 40000,
     "country": "RW",
     "status": "NotStarted",
@@ -373,7 +376,7 @@ List of matching agents
       "indicator": "P43527",
       "templateId": "938be75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
       "number": 1000,
-      "count": 0,
+      "tolerance": 0.1,
       "usdValue": 40000,
       "country": "RW",
       "status": "NotStarted",
@@ -400,7 +403,7 @@ List of matching agents
       "indicator": "P44428",
       "templateId": "fe65e75d52e812f53efd4d4b584eba56da8bfaadb7771c3871c71340c2d1d625",
       "number": 3,
-      "count": 2,
+      "tolerance": 0.1,
       "usdValue": 30000,
       "country": "US",
       "status": "Started",
