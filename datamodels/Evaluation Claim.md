@@ -58,10 +58,10 @@ Every Evaluation Claim must contain the following information
 - **issued**: The date and time the evaluation claim was made
 - **impactClaimID**: Contains an IPLD reference to the impact claim template
 - **location**: The location where the evaluation claim was delivered
-- **evaluationProcedure**: The procedure followed to make thie evalaution
+- **evaluationProcedure**: The procedure followed to make the evalaution
 - **result**: One of the following results captured by the evaluation agent
   - VERIFIED
-  - NEUTRL
+  - NEUTRAL
   - NOT_VERIFIED
 - **reason**: The reason for this evaluation result
 - **signature**: Is a list of entities who sign the claim.  The service agent must sign it, but other entities such as the beneficiaries might also sign the claim

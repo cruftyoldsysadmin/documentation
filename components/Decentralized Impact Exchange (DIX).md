@@ -104,7 +104,7 @@ crowd-funding, bounties, liquid pledging, or other innovations.
 * **Service Agents** include organisations and their related agents, or
 independent individuals, or devices, such as a vending machine that dispenses
 essential commodities for disease prevention.
-* **Evaluation Agents **are the organisations, individuals, or software algorithms
+* **Evaluation Agents** are the organisations, individuals, or software algorithms
 that process impact claims to evaluate whether these claims meet the
 requirements for issuing a Proof of Impact.
 
