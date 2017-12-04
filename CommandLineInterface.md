@@ -773,7 +773,7 @@ A comment relating to the result of evaluation
 
 Submit an evaluation for a Claim Set.
 
-**Command:** submitClaimSet
+**Command:** submitEvaluation
 
 **Arguments:**
 
