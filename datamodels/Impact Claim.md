@@ -21,13 +21,13 @@ A verifiable impact claim maps from a Verifiable claim as follows:
 
 ![Impact Claim](../diagrams/datamodel-impactClaim.png)
 
-## Terminlology ##
+## Terminology ##
 
 **impact claim**
 > A statement made by an entity about an event. A verifiable impact claim is a claim that is effectively tamper-proof and whose authorship can be cryptographically verified.
 
 **entity**
-> A thing with distinct and independent existence such as a person, organization, concept, or device that triggers and event and claims it happened
+> A thing with distinct and independent existence such as a person, organization, concept, or device that triggers an event and claims it happened
 
 **holder**
 > An entity that is in control of one or more verifiable impact claims. Typically a holder is also the issuer of the verifiable impact claims that they issued.
@@ -64,7 +64,7 @@ Every Impact Claim Set must contain the following information
 
 **impact claim set**
 > A set of data elements captured by an entity. It must include the following properties and then any other impact specific properties.
-**metadata**: A set of metadata about the claim set
+- **metadata**: A set of metadata about the claim set
 - **templateID**: Contains an ID of the impact claim template
 - **contractID**: The ID of the contract governing these claims
 - **indicator**: To classify the metric that will be captured by this impact claim
@@ -73,7 +73,7 @@ Every Impact Claim Set must contain the following information
 
 **impact claim**
 > An impact claim is a claim that is effectively tamper-proof and whose authorship can be cryptographically verified. An impact claim relates to the impact delivery and is issued by a service agent, which could be a person or a device. 
-**metadata**: A set of metadata about the claim
+- **metadata**: A set of metadata about the claim
 - **issuer**: The DID of the issuer of this claim
 - **issued**: The date and time the impact claim was made
 - **claim**: Contains the claim data
