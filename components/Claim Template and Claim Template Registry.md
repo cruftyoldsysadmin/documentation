@@ -16,10 +16,10 @@ This document is in draft status and comments regarding this document are welcom
 ***
 
 ## 1. Introduction
-The Impact Claim Template is used to add consistency to the data attributes that are captured as part of an impact claim.  These standards and specifications allow for evaluating and measuring impact claims in consistent way.  Impact Claim Templates are created and stored in a decentralized public repository.  Entities that want to specify a new type of impact claim may create their own Impact Claim Templates so that it may be used as a blueprint for the impact claims they will create. 
+The Impact Claim Template is used to add consistency to the data attributes that are captured as part of an impact claim.  These standards and specifications allow for evaluating and measuring impact claims in a consistent way.  Impact Claim Templates are created and stored in a decentralized public repository.  Entities that want to specify a new type of impact claim may create their own Impact Claim Templates so that it may be used as a blueprint for the impact claims they will create. 
  
 ### 1.1 Ecosystem Overview
-The Impact Claim ecosystem is made up of a number of different entities, but at it's core there are Funders, Service Providers and Evaluators. Funders fund the work needed to deliver on impact claims and require that these claims are evaluated to verify the impact has been delivered.  Service Providers deliver the impact, while Evaluators verify the impact, as claimed by the Service Provider of having been delivered, has actually be delivered. The data captured by the Service Provider that is need to verify the delivery of the impact is stored in an impact claim and the data that the Service Provider needs to capture so the impact claim can be verified is specified in an Impact Claim Template.
+The Impact Claim ecosystem is made up of a number of different entities, but at it's core there are Funders, Service Providers and Evaluators. Funders fund the work needed to deliver on impact claims and require that these claims are evaluated to verify the impact has been delivered.  Service Providers deliver the impact, while Evaluators verify the impact, as claimed by the Service Provider of having been delivered, has actually be delivered. The data captured by the Service Provider that is needed to verify the delivery of the impact is stored in an impact claim and the data that the Service Provider needs to capture so the impact claim can be verified is specified in an Impact Claim Template.
 
 ![Impact Claim Ecosystem](https://github.com/TrustlabTech/Amply-Platform/blob/master/images/Use%20Cases.png)
 
@@ -30,7 +30,7 @@ The impact Claim Template is a schema that defines the format of impact claims. 
 The Impact Claim Registry is a registry of prebuilt templates that define the attributes that are needed when creating different types of impact claims.  The registry is publicly available and is needed to ensure consistency in the way that impact claims are captured.  Any entity may add to the Impact Claim Template Registry provided that the Impact Claim Template that is added conforms to the Impact Claim Template specification.
 
 ### 1.4 Use Cases and Requirements
-The critical use cases for Impact Claim Templates are numerous, but the key usecases are listed below:
+The critical use cases for Impact Claim Templates are numerous, but the key use cases are listed below:
 * Validate Impact Claim Template against Impact Claim Template specifications
 * Add Impact Claim Template to Impact Claim Registry
 * Search Impact Claim Template using Impact Indicator
@@ -51,7 +51,7 @@ JSON-LD is a lightweight Linked Data format. It is easy for humans to read and w
 find out more about JSON-LD here: [https://json-ld.org](https://json-ld.org)
 
 ### 3.2 Components of an Impact Claim Template
-The Impact Claim Template specifies the format for the Impact Claim that will be captured.  This data is split into two sections.  The first section contains the attributes that specific to the type of claim that is being captured and these vary from claim type to claim type.  This section is know as the Claim Attributes.  The second sections contains information about how, when and where the claim was captured.  This section is mandatory and must be present on all claims.  It is called the Claim Metadata.  The data in this section is normally filled in by the system or device that submits the claim.  Both these sections are individually signed with the signature of the Service Provider that submits the claim.
+The Impact Claim Template specifies the format for the Impact Claim that will be captured.  This data is split into two sections.  The first section contains the attributes that are specific to the type of claim that is being captured and these vary from claim type to claim type.  This section is known as the Claim Attributes.  The second sections contains information about how, when and where the claim was captured.  This section is mandatory and must be present on all claims.  It is called the Claim Metadata.  The data in this section is normally filled in by the system or device that submits the claim.  Both these sections are individually signed with the signature of the Service Provider that submits the claim.
 
 #### 3.2.1 Claim Attributes
 The Claim Attributes vary from claim type to claim type and are specific to the claim that is being submitted and contains the information for a validator to validate that the impact was delivered.  These are specified in the Claim Attributes Schema of the Impact Claim Template. The Claim Attributes may be stored outside of the ixo network provided that the information needed to access this data is provided in the Claim Metadata section.  This data will not be publicly available.
