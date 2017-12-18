@@ -6,6 +6,12 @@ There are a number of smart contracts that need to reside in the public Ethereum
 ### ixo Token
 The ixo token is an ERC20 Token.  It will be used for paying the agents involved in the DIX projects.  The total supply of ixo Tokens will be fixed, but tokens will be minted as incentives for certain impacts that are delivered and tokens might be burned when validating node misbehave.
 
+**Requirements**
+- A user can transfer tokens to another user
+- Tokens can be minted with the required authority which is consensus by validators
+- Tokens can be burned with the required authority which is consensus by validators
+- There is a limited total supply of ixo tokens and the total ixo tokens will never exceed this number
+
 ### Token Distribution Contract
 The distribution contract is responsible for managing the distribution of the ixo tokens that will be allocated during the presale event and the public token generation event.
 
@@ -20,7 +26,7 @@ The events that cause the payments of ixo tokens are as follows:
 - Completion of the project
 
 ### DIX Auth
-This contract contains the rules that define who can trigger the payments.  This would normally be the validator Voting Contract
+This contract contains the rules that define who can trigger the payments.  This would normally be the validator Voting Contract.
 (This could potentially be merged with **Mint/Burn Auth** contract)
 
 ### Validator Voting
